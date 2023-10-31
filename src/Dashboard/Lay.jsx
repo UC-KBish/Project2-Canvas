@@ -1,6 +1,7 @@
 import React from 'react';
 import { Layout, Menu, theme } from 'antd';
 import ProgressBar from './ProgressBar';
+import CardGrids from './CardGrids';
 
 const { Header, Content, Sider } = Layout;
 
@@ -18,7 +19,6 @@ const Lay = () => {
           display: 'flex',
           height: '10%',
           padding: '0 10%',
-          alignItems: 'flex-end', // Justify the progress bar to the bottom of the header
         }}
       >
         <h1>Dashboard</h1>
@@ -40,13 +40,16 @@ const Lay = () => {
           style={{
             padding: '0 2% 5%',
             background: colorBgContainer,
-            backgroundColor: 'green',
+            backgroundColor: 'lightgreen',
             height: '100%',
-            alignItems: 'center'
           }}
         >
-          { <ProgressBar />}
+           <ProgressBar />
+           <CardGrids />
+
         </Layout>
+
+
       </Layout>
     </div>
   );
