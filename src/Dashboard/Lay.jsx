@@ -16,14 +16,14 @@ const Lay = () => {
           background: colorBgContainer,
           backgroundColor: 'lightblue',
           display: 'flex',
+          height: '10%',
           padding: '0 10%',
+          alignItems: 'flex-end', // Justify the progress bar to the bottom of the header
         }}
       >
         <h1>Dashboard</h1>
-        
-        <ProgressBar />
-
       </Header>
+    
 
       <Layout style={{ flex: '1 0 auto' }}>
         <Sider
@@ -33,10 +33,8 @@ const Lay = () => {
             backgroundColor: 'red',
           }}
         >
-          this is where side icons go
-          {/* side icons file */}
+          {/* This is where side icons go */}
         </Sider>
-
 
         <Layout
           style={{
@@ -44,10 +42,10 @@ const Lay = () => {
             background: colorBgContainer,
             backgroundColor: 'green',
             height: '100%',
+            alignItems: 'center'
           }}
         >
-          class card components
-          {/* class component cards */}
+          { <ProgressBar />}
         </Layout>
       </Layout>
     </div>
