@@ -12,13 +12,21 @@ import Grades from './Components/ClassPage/Grades';
 import Zoom from './Components/ClassPage/Zoom';
 // import Modules from './Components/ClassPage/Modules';
 
+import TodoList from './Components/todolist/ToDoList';
+
 import './ClassPage.css'
+
+
 
 function ClassPage() {
   let navButtons = ["Syllabus", "Modules", "Assignments", "Grades", "Zoom"]
   let navContent = [<ClassContentModule/>, <Modules/>, <Assignments/>, <Grades/>, <Zoom/>]
 
   const [centerContent, setContent] = useState(<ClassContentModule/>);
+
+  const highPriorityItems = ['Task 1', 'Task 2'];
+  const normalPriorityItems = ['Task 3', 'Task 4'];
+  const lowPriorityItems = [];
 
   function navFunction(index) {
     setContent(navContent[index])    
@@ -39,7 +47,11 @@ function ClassPage() {
       <div id='Right-Column'>
       <ClassSemesterProgressModule weeksLeft='1'/>
       <div className='ToDoModule Container'>
-        ToDo
+        <TodoList
+          highPriority={['Task 1', 'Task 2']}
+          normalPriority={['Task 3', 'Task 4']}
+          lowPriority={['Task 6']}
+        />
       </div>
       <ClassStatsModule/>
       </div>
