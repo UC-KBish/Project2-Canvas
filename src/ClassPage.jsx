@@ -50,14 +50,17 @@ function ClassPage() {
       <TodoList
             highPriority={[
               { name: 'Task 1', dueDate: '2023-12-01', priority: 'high', description: 'Description for Task 1' },
+              { name: 'Task 2', dueDate: '2023-12-31', priority: 'high', description: 'Description for Task 1' },
               // Add more tasks as needed
             ]}
             normalPriority={[
-              { name: 'Task 3', dueDate: '2023-12-03', priority: 'normal', description: 'Description for Task 3' },
+              { name: 'Task 3', dueDate: '2023-11-03', priority: 'normal', description: 'Description for Task 3' },
+              { name: 'Task 4', dueDate: '2023-11-07', priority: 'normal', description: 'Description for Task 4' },
               // Add more tasks as needed
             ]}
             lowPriority={[
-              { name: 'Task 6', dueDate: '2023-12-06', priority: 'low', description: 'Description for Task 6' },
+              { name: 'Task 5', dueDate: '2023-11-15', priority: 'low', description: 'Description for Task 6' },
+              { name: 'Task 6', dueDate: '2023-11-20', priority: 'low', description: 'Description for Task 6' },
               // Add more tasks as needed
             ]}
           />
