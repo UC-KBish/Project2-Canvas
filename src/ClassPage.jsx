@@ -47,11 +47,20 @@ function ClassPage() {
       <div id='Right-Column'>
       <ClassSemesterProgressModule weeksLeft='1'/>
       <div className='ToDoModule Container'>
-        <TodoList
-          highPriority={['Task 1', 'Task 2']}
-          normalPriority={['Task 3', 'Task 4']}
-          lowPriority={['Task 6']}
-        />
+      <TodoList
+            highPriority={[
+              { name: 'Task 1', dueDate: '2023-12-01', priority: 'high', description: 'Description for Task 1' },
+              // Add more tasks as needed
+            ]}
+            normalPriority={[
+              { name: 'Task 3', dueDate: '2023-12-03', priority: 'normal', description: 'Description for Task 3' },
+              // Add more tasks as needed
+            ]}
+            lowPriority={[
+              { name: 'Task 6', dueDate: '2023-12-06', priority: 'low', description: 'Description for Task 6' },
+              // Add more tasks as needed
+            ]}
+          />
       </div>
       <ClassStatsModule/>
       </div>
