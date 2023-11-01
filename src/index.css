@@ -1,0 +1,21 @@
+html, body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  #canvasModule {
+    width: 100%; /* Match the width of the parent div */
+    height: 100%; /* Match the height of the parent div */
+    position: relative; /* Position the canvas inside the div */
+    overflow: hidden;
+  }
+
+  #root {
+    width: 100%; /* Match the width of the parent div */
+    height: 100%; /* Match the height of the parent div */
+    position: absolute; /* Position the canvas inside the div */
+    top: 0;
+    left: 0;
+    overflow: hidden;
+  }
