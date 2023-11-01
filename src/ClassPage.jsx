@@ -7,12 +7,16 @@ import ClassSemesterProgressModule from './Components/ClassPage/ClassSemesterPro
 import ClassStatsModule from './Components/ClassPage/ClassStatsModule'
 
 import Modules from './Components/ClassPage/Modules';
+import Assignments from './Components/ClassPage/Assignments';
+import Grades from './Components/ClassPage/Grades';
+import Zoom from './Components/ClassPage/Zoom';
+// import Modules from './Components/ClassPage/Modules';
 
 import './ClassPage.css'
 
 function ClassPage() {
   let navButtons = ["Syllabus", "Modules", "Assignments", "Grades", "Zoom"]
-  let navContent = [<ClassContentModule/>, <Modules/>, <ClassContentModule/>, <ClassContentModule/>, <ClassContentModule/>]
+  let navContent = [<ClassContentModule/>, <Modules/>, <Assignments/>, <Grades/>, <Zoom/>]
 
   const [centerContent, setContent] = useState(<ClassContentModule/>);
 
