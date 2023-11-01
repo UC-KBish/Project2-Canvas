@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout, Menu, theme } from 'antd';
 import ProgressBar from './ProgressBar';
 import CardGrids from './CardGrids';
+import ClassPage from '../ClassPage';
 
 const { Header, Content, Sider } = Layout;
 
@@ -9,6 +10,12 @@ const Lay = () => {
   const {
     token: { colorBgContainer },
   } = theme.useToken();
+
+  const [centerContent, setContent] = useState(true);
+
+  function setterFunc() {
+    setContent(false)    
+  }
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
@@ -36,6 +43,7 @@ const Lay = () => {
           {/* This is where side icons go */}
         </Sider>
 
+        {centerContent ?
         <Layout
           style={{
             padding: '0 2% 5%',
@@ -44,11 +52,15 @@ const Lay = () => {
             height: '100%',
           }}
         >
-           <ProgressBar />
-           <CardGrids />
+          <ProgressBar /><CardGrids setterFunc={setterFunc}/>
 
-        </Layout>
+        </Layout> :
 
+        <div style={{
+          width: '100%'
+        }}>
+          <ClassPage/>
+        </div> }
 
       </Layout>
     </div>

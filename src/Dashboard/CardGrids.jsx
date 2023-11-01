@@ -15,38 +15,51 @@ const cardStyle = {
 }
 
 
-function CardGrids() {
+function CardGrids(props) {
   return (
-    <Form>
-      <Row>
-        <Col>
-          <Card style={cardStyle}>
-            <Card.Body>
-              <h3>Class Name 1</h3>
-              <p>Description of the class</p>
-            </Card.Body>
-          </Card>
-        </Col>
-        <Col >
-          <Card style={cardStyle}>
-            <Card.Body>
-              <h3>Class Name 2</h3>
-              <p>Description of the class</p>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <Card style={cardStyle}>
-            <Card.Body>
-              <h3>Class Name 3</h3>
-              <p>Description of the class</p>
-            </Card.Body>
-          </Card>
-        </Col>
-      </Row>
-    </Form>
+    <button onClick={props.setterFunc} style={{
+      background: 'none',
+      border: 'none',
+      padding: 0,
+      margin: 0,
+      cursor: 'pointer',
+      color: 'inherit',
+      font: 'inherit',
+      width: '100%',
+      textAlign: 'inherit'
+    }}>
+      <Form>
+        <Row>
+          <Col>
+
+            <Card style={cardStyle}>
+              <Card.Body>
+                <h3>Class Name 1</h3>
+                <p>Description of the class</p>
+              </Card.Body>
+            </Card>
+          </Col>
+          <Col >
+            <Card style={cardStyle}>
+              <Card.Body>
+                <h3>Class Name 2</h3>
+                <p>Description of the class</p>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <Card style={cardStyle}>
+              <Card.Body>
+                <h3>Class Name 3</h3>
+                <p>Description of the class</p>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Form>
+    </button>
   );
 }
 
