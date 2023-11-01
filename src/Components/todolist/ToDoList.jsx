@@ -91,8 +91,8 @@ const TodoList = ({ highPriority, normalPriority, lowPriority }) => {
   return (
     <div className="todo-list-container">
       <Container className='buttonlabelcontainer'>
-        <Row style={{display:"flex"}}>
-          <Col xs={6} style={{display:'flex', alignItems: 'center', justifyItems: 'flex-start'}}>
+        <Row style={{display:"flex", justifyContent: 'space-between'}}>
+          <Col xs={6} style={{ display:'flex', alignItems: 'center', justifyItems: 'flex-start'}}>
             <h4>To do:</h4>
           </Col>
           <Col xs={6} style={{display:'flex', alignItems:'center', justifyItems: 'flex-end'}}>
