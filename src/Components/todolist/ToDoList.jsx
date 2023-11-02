@@ -93,16 +93,18 @@ const TodoList = () => {
 
   return (
     <div className="todo-list-container">
-      <Row className="mb-3">
-        <Col xs="auto">
-          <h4>To do:</h4>
-        </Col>
-        <Col xs="auto">
-          <Button variant="primary" onClick={() => handleShow(null)}>
+      <div className='buttonlabelcontainer'>
+        <Row style={{display:"flex", justifyContent: 'space-between'}}>
+          <Col xs={6} style={{ display:'flex', alignItems: 'center', justifyItems: 'flex-start'}}>
+            <h4>To do:</h4>
+          </Col>
+          <Col xs={6} style={{display:'flex', alignItems:'center', justifyItems: 'flex-end'}}>
+            <Button variant="primary" onClick={() => handleShow(null)}>
             +
-          </Button>
-        </Col>
-      </Row>
+            </Button>
+          </Col>
+        </Row>
+        </div>
       <div className="listonlycontainer">
         {highPriority.length > 0 && (
           <div>
