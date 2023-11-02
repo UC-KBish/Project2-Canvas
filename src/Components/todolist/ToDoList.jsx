@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { ListGroup, Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import { format, formatDistanceToNow } from 'date-fns';
 import './ToDoList.css';
 
 const TodoList = () => {
@@ -120,7 +121,17 @@ const TodoList = () => {
             <ListGroup>
               {highPriority.map((item) => (
                 <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                  {item.name}
+                  <div className="task-info">
+                    <span>{item.name}</span>
+                    <span className="due-date">
+                      {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })} (in ${formatDistanceToNow(new Date(item.dueDate))})`}
+                    </span>
+                  </div>
                 </ListGroup.Item>
               ))}
             </ListGroup>
@@ -132,7 +143,17 @@ const TodoList = () => {
             <ListGroup>
               {normalPriority.map((item) => (
                 <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                  {item.name}
+                  <div className="task-info">
+                    <span>{item.name}</span>
+                    <span className="due-date">
+                      {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })} (in ${formatDistanceToNow(new Date(item.dueDate))})`}
+                    </span>
+                  </div>
                 </ListGroup.Item>
               ))}
             </ListGroup>
@@ -144,7 +165,17 @@ const TodoList = () => {
             <ListGroup>
               {lowPriority.map((item) => (
                 <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                  {item.name}
+                  <div className="task-info">
+                    <span>{item.name}</span>
+                    <span className="due-date">
+                      {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })} (in ${formatDistanceToNow(new Date(item.dueDate))})`}
+                    </span>
+                  </div>
                 </ListGroup.Item>
               ))}
             </ListGroup>
@@ -155,12 +186,22 @@ const TodoList = () => {
       <div className="listonlycontainer">
         <h4>Done:</h4>
         <ListGroup>
-          {completedTasks.map((item) => (
-            <ListGroup.Item key={item.id}>
-              {item.name}
-            </ListGroup.Item>
-          ))}
-        </ListGroup>
+              {completedTasks.map((item) => (
+                <ListGroup.Item key={item.id}>
+                  <div className="task-info">
+                    <span>{item.name}</span>
+                    <span className="due-date">
+                      {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })} (in ${formatDistanceToNow(new Date(item.dueDate))})`}
+                    </span>
+                  </div>
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
       </div>
 
       <Modal show={showModal} onHide={handleClose}>
