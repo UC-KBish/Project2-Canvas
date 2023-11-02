@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { ListGroup, Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import { ListGroup, Modal, Button, Form, Row, Col, Container} from 'react-bootstrap';
 import './ToDoList.css';
 
-const TodoList = () => {
+const TodoList = (props) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskName, setTaskName] = useState('');
@@ -10,16 +10,9 @@ const TodoList = () => {
   const [priority, setPriority] = useState('low');
   const [description, setDescription] = useState('');
 
-  const [highPriority, setHighPriority] = useState([
-    { id: 1, name: 'Task 1', priority: 'high', dueDate: '2023-11-10', description: 'Description for Task 1' },
-    { id: 2, name: 'Task 2', priority: 'high', dueDate: '2023-11-12', description: 'Description for Task 2' }
-  ]);
-  const [normalPriority, setNormalPriority] = useState([
-    { id: 3, name: 'Task 3', priority: 'normal', dueDate: '2023-11-15', description: 'Description for Task 3' }
-  ]);
-  const [lowPriority, setLowPriority] = useState([
-    { id: 4, name: 'Task 4', priority: 'low', dueDate: '2023-11-20', description: 'Description for Task 4' }
-  ]);
+  const { highPriority, normalPriority, lowPriority } = props;
+
+
 
   const handleShow = (task) => {
     setSelectedTask(task);
@@ -93,16 +86,18 @@ const TodoList = () => {
 
   return (
     <div className="todo-list-container">
-      <Row className="mb-3">
-        <Col xs="auto">
-          <h4>To do:</h4>
-        </Col>
-        <Col xs="auto">
-          <Button variant="primary" onClick={() => handleShow(null)}>
+        <div className='buttonlabelcontainer'>
+        <Row style={{display:"flex", justifyContent: 'space-between'}}>
+          <Col xs={6} style={{ display:'flex', alignItems: 'center', justifyItems: 'flex-start'}}>
+            <h4>To do:</h4>
+          </Col>
+          <Col xs={6} style={{display:'flex', alignItems:'center', justifyItems: 'flex-end'}}>
+            <Button variant="primary" onClick={() => handleShow(null)}>
             +
-          </Button>
-        </Col>
-      </Row>
+            </Button>
+          </Col>
+        </Row>
+      </div>
       <div className="listonlycontainer">
         {highPriority.length > 0 && (
           <div>
