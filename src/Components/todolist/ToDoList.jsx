@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import { ListGroup, Modal, Button, Form, Row, Col, Container } from 'react-bootstrap';
-import './ToDoList.css'
+import { ListGroup, Modal, Button, Form, Row, Col } from 'react-bootstrap';
+import './ToDoList.css';
 
-
-const TodoList = ({ highPriority, normalPriority, lowPriority }) => {
+const TodoList = () => {
   const [showModal, setShowModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskName, setTaskName] = useState('');
@@ -11,7 +10,18 @@ const TodoList = ({ highPriority, normalPriority, lowPriority }) => {
   const [priority, setPriority] = useState('low');
   const [description, setDescription] = useState('');
 
- const handleShow = (task) => {
+  const [highPriority, setHighPriority] = useState([
+    { id: 1, name: 'Task 1', priority: 'high', dueDate: '2023-11-10', description: 'Description for Task 1' },
+    { id: 2, name: 'Task 2', priority: 'high', dueDate: '2023-11-12', description: 'Description for Task 2' }
+  ]);
+  const [normalPriority, setNormalPriority] = useState([
+    { id: 3, name: 'Task 3', priority: 'normal', dueDate: '2023-11-15', description: 'Description for Task 3' }
+  ]);
+  const [lowPriority, setLowPriority] = useState([
+    { id: 4, name: 'Task 4', priority: 'low', dueDate: '2023-11-20', description: 'Description for Task 4' }
+  ]);
+
+  const handleShow = (task) => {
     setSelectedTask(task);
     setTaskName(task ? task.name : '');
     setDueDate(task ? task.dueDate : '');
@@ -31,85 +41,77 @@ const TodoList = ({ highPriority, normalPriority, lowPriority }) => {
       priority: priority || 'normal',
       description: description
     };
-  
+
     if (selectedTask) {
-      // Handle update logic here
-      if (selectedTask.priority === 'high') {
-        setHighPriority((prevState) =>
-          prevState.map((task) =>
-            task === selectedTask ? updatedTask : task
-          )
-        );
-      } else if (selectedTask.priority === 'normal') {
-        setNormalPriority((prevState) =>
-          prevState.map((task) =>
-            task === selectedTask ? updatedTask : task
-          )
-        );
-      } else if (selectedTask.priority === 'low') {
-        setLowPriority((prevState) =>
-          prevState.map((task) =>
-            task === selectedTask ? updatedTask : task
-          )
-        );
-      }
+      // Update existing task
+      const updatedTasks = (selectedTask.priority === 'high')
+        ? highPriority.map(task => (task.id === selectedTask.id ? updatedTask : task))
+        : (selectedTask.priority === 'normal')
+          ? normalPriority.map(task => (task.id === selectedTask.id ? updatedTask : task))
+          : lowPriority.map(task => (task.id === selectedTask.id ? updatedTask : task));
+
+      setHighPriority((prevState) => (selectedTask.priority === 'high' ? updatedTasks : prevState));
+      setNormalPriority((prevState) => (selectedTask.priority === 'normal' ? updatedTasks : prevState));
+      setLowPriority((prevState) => (selectedTask.priority === 'low' ? updatedTasks : prevState));
     } else {
-      // Handle add logic here
+      // Add new task
+      const newTask = {
+        id: Date.now(),
+        name: taskName,
+        priority: priority,
+        dueDate: dueDate,
+        description: description
+      };
+
       if (priority === 'high') {
-        setHighPriority((prevState) => [...prevState, updatedTask]);
+        setHighPriority((prevState) => [...prevState, newTask]);
       } else if (priority === 'normal') {
-        setNormalPriority((prevState) => [...prevState, updatedTask]);
+        setNormalPriority((prevState) => [...prevState, newTask]);
       } else if (priority === 'low') {
-        setLowPriority((prevState) => [...prevState, updatedTask]);
+        setLowPriority((prevState) => [...prevState, newTask]);
       }
     }
-  
+
     setShowModal(false);
   };
-  
+
   const handleDelete = () => {
     if (selectedTask) {
-      // Handle delete logic here
-      if (selectedTask.priority === 'high') {
-        setHighPriority((prevState) =>
-          prevState.filter((task) => task !== selectedTask)
-        );
-      } else if (selectedTask.priority === 'normal') {
-        setNormalPriority((prevState) =>
-          prevState.filter((task) => task !== selectedTask)
-        );
-      } else if (selectedTask.priority === 'low') {
-        setLowPriority((prevState) =>
-          prevState.filter((task) => task !== selectedTask)
-        );
-      }
+      const updatedTasks = (selectedTask.priority === 'high')
+        ? highPriority.filter(task => task.id !== selectedTask.id)
+        : (selectedTask.priority === 'normal')
+          ? normalPriority.filter(task => task.id !== selectedTask.id)
+          : lowPriority.filter(task => task.id !== selectedTask.id);
+
+      setHighPriority((prevState) => (selectedTask.priority === 'high' ? updatedTasks : prevState));
+      setNormalPriority((prevState) => (selectedTask.priority === 'normal' ? updatedTasks : prevState));
+      setLowPriority((prevState) => (selectedTask.priority === 'low' ? updatedTasks : prevState));
+
+      setShowModal(false);
     }
-  
-    setShowModal(false);
   };
 
   return (
     <div className="todo-list-container">
-      <Container className='buttonlabelcontainer'>
-        <Row style={{display:"flex", justifyContent: 'space-between'}}>
-          <Col xs={6} style={{ display:'flex', alignItems: 'center', justifyItems: 'flex-start'}}>
-            <h4>To do:</h4>
-          </Col>
-          <Col xs={6} style={{display:'flex', alignItems:'center', justifyItems: 'flex-end'}}>
-            <Button variant="primary" onClick={() => handleShow(null)}>
-              +
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-       
+      <Row className="mb-3">
+        <Col xs="auto">
+          <h4>To do:</h4>
+        </Col>
+        <Col xs="auto">
+          <Button variant="primary" onClick={() => handleShow(null)}>
+            +
+          </Button>
+        </Col>
+      </Row>
       <div className="listonlycontainer">
         {highPriority.length > 0 && (
           <div>
             <h5>High Priority</h5>
             <ListGroup>
-              {highPriority.map((item, index) => (
-                <ListGroup.Item key={index}>{item.name}</ListGroup.Item>
+              {highPriority.map((item) => (
+                <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                  {item.name}
+                </ListGroup.Item>
               ))}
             </ListGroup>
           </div>
@@ -118,8 +120,10 @@ const TodoList = ({ highPriority, normalPriority, lowPriority }) => {
           <div>
             <h5>Normal Priority</h5>
             <ListGroup>
-              {normalPriority.map((item, index) => (
-                <ListGroup.Item key={index}>{item.name}</ListGroup.Item>
+              {normalPriority.map((item) => (
+                <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                  {item.name}
+                </ListGroup.Item>
               ))}
             </ListGroup>
           </div>
@@ -128,16 +132,16 @@ const TodoList = ({ highPriority, normalPriority, lowPriority }) => {
           <div>
             <h5>Low Priority</h5>
             <ListGroup>
-              {lowPriority.map((item, index) => (
-                <ListGroup.Item key={index}>{item.name}</ListGroup.Item>
+              {lowPriority.map((item) => (
+                <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                  {item.name}
+                </ListGroup.Item>
               ))}
             </ListGroup>
           </div>
         )}
-
       </div>
-      
-      {/* Add Modals for Edit */}
+
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title>{selectedTask ? 'Edit Task' : 'Add Task'}</Modal.Title>
@@ -202,4 +206,3 @@ const TodoList = ({ highPriority, normalPriority, lowPriority }) => {
 };
 
 export default TodoList;
-
