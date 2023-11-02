@@ -14,7 +14,8 @@ const TodoList = () => {
 
   const [highPriority, setHighPriority] = useState([
     { id: 1, name: 'Task 1', priority: 'high', dueDate: '2023-11-10T00:00:00', description: 'Description for Task 1' },
-    { id: 2, name: 'Task 2', priority: 'high', dueDate: '2023-11-12T00:00:00', description: 'Description for Task 2' }
+    { id: 2, name: 'Task 2', priority: 'high', dueDate: '2023-11-12T00:00:00', description: 'Description for Task 2' },
+    { id: 8, name: 'Task 8', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Task 7'}
   ]);
   
   const [normalPriority, setNormalPriority] = useState([
@@ -108,7 +109,7 @@ const TodoList = () => {
       <div className='buttonlabelcontainer'>
         <Row style={{display:"flex", justifyContent: 'space-between'}}>
           <Col xs={6} style={{ display:'flex', alignItems: 'center', justifyItems: 'flex-start'}}>
-            <h4>To do:</h4>
+            <h2>To do:</h2>
           </Col>
           <Col xs={6} style={{display:'flex', alignItems:'center', justifyItems: 'flex-end'}}>
             <Button variant="primary" onClick={() => handleShow(null)}>
@@ -120,7 +121,7 @@ const TodoList = () => {
       <div className="listonlycontainer">
         {highPriority.length > 0 && (
           <div>
-            <h5>High Priority</h5>
+            <h4>High Priority</h4>
             <ListGroup>
               {highPriority.map((item) => {
                 const now = new Date();
@@ -141,7 +142,8 @@ const TodoList = () => {
                 return (
                   <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
                     <div className="task-info">
-                      <span>{item.name}</span>
+                      <span className="task-name">{item.name}</span>
+                      <br />
                       <span className="due-date">
                         {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
                           weekday: 'long',
@@ -159,120 +161,123 @@ const TodoList = () => {
         )}
         {normalPriority.length > 0 && (
           <div>
-            <h5>Normal Priority</h5>
-            <ListGroup>
-              {normalPriority.map((item) => {
-                const now = new Date();
-                const dueDate = new Date(item.dueDate);
-                const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+            <h4>Normal Priority</h4>
+              <ListGroup>
+                {normalPriority.map((item) => {
+                  const now = new Date();
+                  const dueDate = new Date(item.dueDate);
+                  const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
 
-                let relativeTime;
-                if (diffInDays > 30) {
-                  const diffInMonths = Math.floor(diffInDays / 30);
-                  relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
-                } else if (diffInDays > 7) {
-                  const diffInWeeks = Math.floor(diffInDays / 7);
-                  relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
-                } else {
-                  relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
-                }
+                  let relativeTime;
+                  if (diffInDays > 30) {
+                    const diffInMonths = Math.floor(diffInDays / 30);
+                    relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
+                  } else if (diffInDays > 7) {
+                    const diffInWeeks = Math.floor(diffInDays / 7);
+                    relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
+                  } else {
+                    relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
+                  }
 
-                return (
-                  <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                    <div className="task-info">
-                      <span>{item.name}</span>
-                      <span className="due-date">
-                        {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
-                          weekday: 'long',
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })} (in ${relativeTime})`}
-                      </span>
-                    </div>
-                  </ListGroup.Item>
-                );
-              })}
-            </ListGroup>
+                  return (
+                    <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                      <div className="task-info">
+                        <span className="task-name">{item.name}</span>
+                        <br />
+                        <span className="due-date">
+                          {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })} (in ${relativeTime})`}
+                        </span>
+                      </div>
+                    </ListGroup.Item>
+                  );
+                })}
+              </ListGroup>
           </div>
         )}
         {lowPriority.length > 0 && (
           <div>
-            <h5>Low Priority</h5>
-            <ListGroup>
-              {lowPriority.map((item) => {
-                const now = new Date();
-                const dueDate = new Date(item.dueDate);
-                const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+            <h4>Low Priority</h4>
+              <ListGroup>
+                {lowPriority.map((item) => {
+                  const now = new Date();
+                  const dueDate = new Date(item.dueDate);
+                  const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
 
-                let relativeTime;
-                if (diffInDays > 30) {
-                  const diffInMonths = Math.floor(diffInDays / 30);
-                  relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
-                } else if (diffInDays > 7) {
-                  const diffInWeeks = Math.floor(diffInDays / 7);
-                  relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
-                } else {
-                  relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
-                }
+                  let relativeTime;
+                  if (diffInDays > 30) {
+                    const diffInMonths = Math.floor(diffInDays / 30);
+                    relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
+                  } else if (diffInDays > 7) {
+                    const diffInWeeks = Math.floor(diffInDays / 7);
+                    relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
+                  } else {
+                    relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
+                  }
 
-                return (
-                  <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                    <div className="task-info">
-                      <span>{item.name}</span>
-                      <span className="due-date">
-                        {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
-                          weekday: 'long',
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })} (in ${relativeTime})`}
-                      </span>
-                    </div>
-                  </ListGroup.Item>
-                );
-              })}
-            </ListGroup>
+                  return (
+                    <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                      <div className="task-info">
+                        <span className="task-name">{item.name}</span>
+                        <br />
+                        <span className="due-date">
+                          {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
+                            weekday: 'long',
+                            year: 'numeric',
+                            month: 'long',
+                            day: 'numeric',
+                          })} (in ${relativeTime})`}
+                        </span>
+                      </div>
+                    </ListGroup.Item>
+                  );
+                })}
+              </ListGroup>
           </div>
         )}
       </div>
 
       <div className="listonlycontainer">
-        <h4>Done:</h4>
-        <ListGroup>
-              {completedTasks.map((item) => {
-                const now = new Date();
-                const dueDate = new Date(item.dueDate);
-                const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+        <h2>Done:</h2>
+          <ListGroup>
+            {completedTasks.map((item) => {
+              const now = new Date();
+              const dueDate = new Date(item.dueDate);
+              const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
 
-                let relativeTime;
-                if (diffInDays > 30) {
-                  const diffInMonths = Math.floor(diffInDays / 30);
-                  relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
-                } else if (diffInDays > 7) {
-                  const diffInWeeks = Math.floor(diffInDays / 7);
-                  relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
-                } else {
-                  relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
-                }
+              let relativeTime;
+              if (diffInDays > 30) {
+                const diffInMonths = Math.floor(diffInDays / 30);
+                relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
+              } else if (diffInDays > 7) {
+                const diffInWeeks = Math.floor(diffInDays / 7);
+                relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
+              } else {
+                relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
+              }
 
-                return (
-                  <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                    <div className="task-info">
-                      <span>{item.name}</span>
-                      <span className="due-date">
-                        {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
-                          weekday: 'long',
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })} (in ${relativeTime})`}
-                      </span>
-                    </div>
-                  </ListGroup.Item>
-                );
-              })}
-            </ListGroup>
+              return (
+                <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                  <div className="task-info">
+                    <span className="task-name">{item.name}</span>
+                    <br />
+                    <span className="due-date">
+                      {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      })} (in ${relativeTime})`}
+                    </span>
+                  </div>
+                </ListGroup.Item>
+              );
+            })}
+          </ListGroup>
       </div>
 
       <Modal show={showModal} onHide={handleClose}>

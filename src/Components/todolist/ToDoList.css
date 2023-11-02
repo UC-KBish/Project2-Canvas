@@ -7,4 +7,12 @@
   max-height: 200px;
   overflow-y: auto;  /* Add a vertical scrollbar if necessary */
 }
+
+.task-name {
+  /* font-size: 1em; Adjust the font size as needed */
+}
+
+.due-date {
+  /* font-size: 0.8em; Adjust the font size as needed */
+}
   
