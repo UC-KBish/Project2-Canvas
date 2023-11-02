@@ -145,7 +145,7 @@ const TodoList = () => {
       </div>
 
       <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header closeButton>
+        <Modal.Header>
           <Modal.Title>{selectedTask ? 'Edit Task' : 'Add Task'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
