@@ -9,6 +9,7 @@ const TodoList = () => {
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState('low');
   const [description, setDescription] = useState('');
+  const [completedTasks, setCompletedTasks] = useState([]);
 
   const [highPriority, setHighPriority] = useState([
     { id: 1, name: 'Task 1', priority: 'high', dueDate: '2023-11-10', description: 'Description for Task 1' },
@@ -18,8 +19,15 @@ const TodoList = () => {
     { id: 3, name: 'Task 3', priority: 'normal', dueDate: '2023-11-15', description: 'Description for Task 3' }
   ]);
   const [lowPriority, setLowPriority] = useState([
-    { id: 4, name: 'Task 4', priority: 'low', dueDate: '2023-11-20', description: 'Description for Task 4' }
+    { id: 4, name: 'Task 4', priority: 'low', dueDate: '2023-11-20', description: 'Description for Task 4' },
+    { id: 5, name: 'Task 5', priority: 'low', dueDate: '2023-11-25', description: 'Description for Task 5' },
+    { id: 6, name: 'Task 6', priority: 'low', dueDate: '2023-11-30', description: 'Description for Task 6' }
   ]);
+
+  const markTaskAsDone = (task) => {
+    setCompletedTasks([...completedTasks, task]);
+    handleDelete(); // This will delete the task from the original list
+  };
 
   const handleShow = (task) => {
     setSelectedTask(task);
@@ -104,7 +112,7 @@ const TodoList = () => {
             </Button>
           </Col>
         </Row>
-        </div>
+      </div>
       <div className="listonlycontainer">
         {highPriority.length > 0 && (
           <div>
@@ -142,6 +150,17 @@ const TodoList = () => {
             </ListGroup>
           </div>
         )}
+      </div>
+
+      <div className="listonlycontainer">
+        <h4>Done:</h4>
+        <ListGroup>
+          {completedTasks.map((item) => (
+            <ListGroup.Item key={item.id}>
+              {item.name}
+            </ListGroup.Item>
+          ))}
+        </ListGroup>
       </div>
 
       <Modal show={showModal} onHide={handleClose}>
@@ -201,6 +220,11 @@ const TodoList = () => {
           <Button variant="primary" onClick={handleSave}>
             Save Changes
           </Button>
+          {selectedTask && !completedTasks.includes(selectedTask) && (
+            <Button variant="success" onClick={() => markTaskAsDone(selectedTask)}>
+              Mark as Done
+            </Button>
+          )}
         </Modal.Footer>
       </Modal>
     </div>
