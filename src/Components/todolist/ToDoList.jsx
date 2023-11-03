@@ -290,16 +290,18 @@ const TodoList = () => {
 
       {showModal && (
       <Modal show={showModal} onHide={handleClose}>
-        <Modal.Header>
+        <Modal.Header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #ccc'  }}>
           <Modal.Title>{selectedTask ? 'Edit Task' : 'Add Task'}</Modal.Title>
-          <Button variant="outline-secondary" className="close" onClick={handleClose}>
-            <span aria-hidden="true">&times;</span>
-          </Button>
+          <div className="closebuttondiv">
+            <Button variant="outline-secondary" className="close" style={{ verticalAlign: 'middle' }} onClick={handleClose}>
+              <span aria-hidden="true">&times;</span>
+            </Button>
+          </div>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId="formTaskName">
-              <Form.Label>Task Name</Form.Label>
+              <Form.Label>Task Name:</Form.Label>
               <Form.Control
                 type="text"
                 value={taskName}
@@ -307,7 +309,7 @@ const TodoList = () => {
               />
             </Form.Group>
             <Form.Group controlId="formDueDate">
-              <Form.Label>Due Date</Form.Label>
+              <Form.Label>Due Date:</Form.Label>
               <Form.Control
                 type="date"
                 value={dueDate}
@@ -315,7 +317,7 @@ const TodoList = () => {
               />
             </Form.Group>
             <Form.Group controlId="formPriority">
-              <Form.Label>Priority</Form.Label>
+              <Form.Label>Priority:</Form.Label>
               <Form.Control
                 as="select"
                 value={priority}
@@ -327,7 +329,7 @@ const TodoList = () => {
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formDescription">
-              <Form.Label className="description">Description</Form.Label>
+              <Form.Label className="description">Description:</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}

@@ -27,33 +27,27 @@
   border: 1px solid #ccc; /* You can adjust the color as needed */
 }
 .modal-title {
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #ccc; 
-  padding-bottom: 0.25rem; 
   font-size: 1.5rem; /* Adjust the font size as per your preference */
   padding-left: .2rem;
-  
 }
 .modal-body *:not(.close) {
   padding: 0.1rem;
 }
 
 .modal-header .close {
-  width: 2rem; /* Adjust the width to match the desired size */
-  height: 2rem; /* Match the height to the width */
+  width: 1.5rem; /* Adjust the width to match the desired size */
+  height: 1.5rem; /* Match the height to the width */
   font-size: 1.5rem; /* Match the font size to the width and height */
-  line-height: 1; /* Ensure the "x" is vertically centered */
-  position: absolute;
-  right: 0rem; /* Adjust the right position as needed */
-  top: 0rem; /* Adjust the top position as needed */
 }
 
 .close {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 1.5rem;
+
+  display: flex;
+  align-items: center;
+  justify-items: center;
   color: #000;
+  cursor: pointer;
+
 }
 
 .close:hover {
