@@ -120,3 +120,17 @@
     /* background-color: #c0c0c0; */
     margin: 0;
 }
+
+/* Assignments */
+.AssignmentModule > div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.AssignmentModule > p {
+    flex: 1;
+}
+
+.hidden-element {
+    display: none !important;
+  }

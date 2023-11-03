@@ -1,0 +1,22 @@
+[
+    {
+        "name": "Assignment 1",
+        "due": null,
+        "completed": false
+    },
+    {
+        "name": "Assignment 2",
+        "due": null,
+        "completed": false
+    },
+    {
+        "name": "Assignment 3",
+        "due": null,
+        "completed": false
+    },
+    {
+        "name": "Assignment 4",
+        "due": null,
+        "completed": true
+    }
+]

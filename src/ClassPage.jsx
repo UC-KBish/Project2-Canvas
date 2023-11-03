@@ -25,7 +25,7 @@ function ClassPage() {
   const [centerContent, setContent] = useState(<ClassContentModule/>);
 
   function navFunction(index) {
-    setContent(navContent[index])    
+    setContent(navContent[index])
   }
 
   return (
@@ -41,7 +41,7 @@ function ClassPage() {
         </div>
       </div>
       <div id='Right-Column'>
-      <ClassSemesterProgressModule weeksLeft='1'/>
+      <ClassSemesterProgressModule weeksLeft='16'/>
       <div className='ToDoModule Container'>
       <TodoList/>
       </div>
