@@ -288,9 +288,13 @@ const TodoList = () => {
             </ListGroup>
       </div>
 
+      {showModal && (
       <Modal show={showModal} onHide={handleClose}>
         <Modal.Header>
           <Modal.Title>{selectedTask ? 'Edit Task' : 'Add Task'}</Modal.Title>
+          <Button variant="outline-secondary" className="close" onClick={handleClose}>
+            <span aria-hidden="true">&times;</span>
+          </Button>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -323,7 +327,7 @@ const TodoList = () => {
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formDescription">
-              <Form.Label>Description</Form.Label>
+              <Form.Label className="description">Description</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
@@ -352,6 +356,7 @@ const TodoList = () => {
           )}
         </Modal.Footer>
       </Modal>
+      )}
     </div>
   );
 };
