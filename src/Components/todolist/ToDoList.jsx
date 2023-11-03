@@ -246,9 +246,11 @@ const TodoList = () => {
           </div>
         )}
       </div>
-
-      <div className="listonlycontainer">
+      <div className='buttonlabelcontainer'>
         <h2>Done:</h2>
+      </div>
+   
+      <div className="listonlycontainer">
           <ListGroup>
               {completedTasks.map((item) => {
                 const now = new Date();

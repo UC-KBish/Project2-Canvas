@@ -1,10 +1,11 @@
 .todo-list-container {
-    max-height: 250px; /* Set the maximum height for the component */
+    max-height: 475px; /* Set the maximum height for the component */
   
   }
 
 .listonlycontainer {
-  max-height: 200px;
+  max-height: 180px;
+  margin-top: 0px;
   overflow-y: auto;  /* Add a vertical scrollbar if necessary */
 }
 
