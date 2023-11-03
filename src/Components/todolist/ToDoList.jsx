@@ -37,7 +37,7 @@ const TodoList = () => {
   const handleShow = (task) => {
     setSelectedTask(task);
     setTaskName(task ? task.name : '');
-    setDueDate(task ? task.dueDate : '');
+    setDueDate(task ? task.dueDate.slice(0, 10) : '');
     setPriority(task ? task.priority : 'low');
     setDescription(task ? task.description : '');
     setShowModal(true);
@@ -50,7 +50,7 @@ const TodoList = () => {
   const handleSave = () => {
     const updatedTask = {
       name: taskName,
-      dueDate: dueDate,
+      dueDate: `${dueDate}T00:00:00`, // Set the time to midnight (00:00:00 ) so relative time is not interfered with
       priority: priority || 'normal',
       description: description
     };
