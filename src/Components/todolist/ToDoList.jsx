@@ -139,18 +139,20 @@ const TodoList = () => {
                   relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
                 }
 
+                const formattedDueDate = dueDate.toLocaleString('en-US', {
+                  weekday: 'short', 
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric', 
+                });
+
                 return (
                   <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
                     <div className="task-info">
                       <span className="task-name">{item.name}</span>
                       <br />
                       <span className="due-date">
-                        {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
-                          weekday: 'long',
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        })} (in ${relativeTime})`}
+                        {`Due: ${formattedDueDate} (in ${relativeTime})`}
                       </span>
                     </div>
                   </ListGroup.Item>
@@ -179,18 +181,20 @@ const TodoList = () => {
                     relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
                   }
 
+                  const formattedDueDate = dueDate.toLocaleString('en-US', {
+                    weekday: 'short', 
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric', 
+                  });
+
                   return (
                     <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
                       <div className="task-info">
                         <span className="task-name">{item.name}</span>
                         <br />
                         <span className="due-date">
-                          {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
-                            weekday: 'long',
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })} (in ${relativeTime})`}
+                          {`Due: ${formattedDueDate} (in ${relativeTime})`}
                         </span>
                       </div>
                     </ListGroup.Item>
@@ -203,39 +207,41 @@ const TodoList = () => {
           <div>
             <h4>Low Priority</h4>
               <ListGroup>
-                {lowPriority.map((item) => {
-                  const now = new Date();
-                  const dueDate = new Date(item.dueDate);
-                  const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+                  {lowPriority.map((item) => {
+                    const now = new Date();
+                    const dueDate = new Date(item.dueDate);
+                    const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
 
-                  let relativeTime;
-                  if (diffInDays > 30) {
-                    const diffInMonths = Math.floor(diffInDays / 30);
-                    relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
-                  } else if (diffInDays > 7) {
-                    const diffInWeeks = Math.floor(diffInDays / 7);
-                    relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
-                  } else {
-                    relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
-                  }
+                    let relativeTime;
+                    if (diffInDays > 30) {
+                      const diffInMonths = Math.floor(diffInDays / 30);
+                      relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
+                    } else if (diffInDays > 7) {
+                      const diffInWeeks = Math.floor(diffInDays / 7);
+                      relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
+                    } else {
+                      relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
+                    }
 
-                  return (
-                    <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                      <div className="task-info">
-                        <span className="task-name">{item.name}</span>
-                        <br />
-                        <span className="due-date">
-                          {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
-                            weekday: 'long',
-                            year: 'numeric',
-                            month: 'long',
-                            day: 'numeric',
-                          })} (in ${relativeTime})`}
-                        </span>
-                      </div>
-                    </ListGroup.Item>
-                  );
-                })}
+                    const formattedDueDate = dueDate.toLocaleString('en-US', {
+                      weekday: 'short', 
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric', 
+                    });
+
+                    return (
+                      <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                        <div className="task-info">
+                          <span className="task-name">{item.name}</span>
+                          <br />
+                          <span className="due-date">
+                            {`Due: ${formattedDueDate} (in ${relativeTime})`}
+                          </span>
+                        </div>
+                      </ListGroup.Item>
+                    );
+                  })}
               </ListGroup>
           </div>
         )}
@@ -244,40 +250,42 @@ const TodoList = () => {
       <div className="listonlycontainer">
         <h2>Done:</h2>
           <ListGroup>
-            {completedTasks.map((item) => {
-              const now = new Date();
-              const dueDate = new Date(item.dueDate);
-              const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
+              {completedTasks.map((item) => {
+                const now = new Date();
+                const dueDate = new Date(item.dueDate);
+                const diffInDays = Math.ceil((dueDate - now) / (1000 * 60 * 60 * 24));
 
-              let relativeTime;
-              if (diffInDays > 30) {
-                const diffInMonths = Math.floor(diffInDays / 30);
-                relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
-              } else if (diffInDays > 7) {
-                const diffInWeeks = Math.floor(diffInDays / 7);
-                relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
-              } else {
-                relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
-              }
+                let relativeTime;
+                if (diffInDays > 30) {
+                  const diffInMonths = Math.floor(diffInDays / 30);
+                  relativeTime = `${diffInMonths} ${diffInMonths > 1 ? 'months' : 'month'}`;
+                } else if (diffInDays > 7) {
+                  const diffInWeeks = Math.floor(diffInDays / 7);
+                  relativeTime = `${diffInWeeks} ${diffInWeeks > 1 ? 'weeks' : 'week'}`;
+                } else {
+                  relativeTime = `${diffInDays} ${diffInDays > 1 ? 'days' : 'day'}`;
+                }
 
-              return (
-                <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
-                  <div className="task-info">
-                    <span className="task-name">{item.name}</span>
-                    <br />
-                    <span className="due-date">
-                      {`Due: ${new Date(item.dueDate).toLocaleString('en-US', {
-                        weekday: 'long',
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric',
-                      })} (in ${relativeTime})`}
-                    </span>
-                  </div>
-                </ListGroup.Item>
-              );
-            })}
-          </ListGroup>
+                const formattedDueDate = dueDate.toLocaleString('en-US', {
+                  weekday: 'short', 
+                  month: 'short',
+                  day: 'numeric',
+                  year: 'numeric', 
+                });
+
+                return (
+                  <ListGroup.Item key={item.id} onClick={() => handleShow(item)}>
+                    <div className="task-info">
+                      <span className="task-name">{item.name}</span>
+                      <br />
+                      <span className="due-date">
+                        {`Due: ${formattedDueDate} (in ${relativeTime})`}
+                      </span>
+                    </div>
+                  </ListGroup.Item>
+                );
+              })}
+            </ListGroup>
       </div>
 
       <Modal show={showModal} onHide={handleClose}>
