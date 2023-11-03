@@ -8,7 +8,14 @@
   overflow-y: auto;  /* Add a vertical scrollbar if necessary */
 }
 
+.priority-label {
+  margin-bottom: 5px; 
+  margin-top: 10px;
+}
+
 .task-name {
+  text-decoration: underline;
+  cursor: pointer;
   /* font-size: 1em; Adjust the font size as needed */
 }
 
@@ -16,3 +23,8 @@
   font-size: 0.7em; /*Adjust the font size as needed */
 }
   
+
+.buttonlabelcontainer {
+  margin-bottom: 0px;
+}
+

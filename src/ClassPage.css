@@ -99,6 +99,7 @@
 .ToDoModule {
     border-left: 2px solid black;
     border-bottom: 2px solid black;
+    max-height: 700px; /*set max height so it doesn't take up too much space? */
     flex: 1;
 }
 

@@ -121,7 +121,7 @@ const TodoList = () => {
       <div className="listonlycontainer">
         {highPriority.length > 0 && (
           <div>
-            <h4>High Priority</h4>
+            <h4 className="priority-label">High Priority</h4>
             <ListGroup>
               {highPriority.map((item) => {
                 const now = new Date();
@@ -163,7 +163,7 @@ const TodoList = () => {
         )}
         {normalPriority.length > 0 && (
           <div>
-            <h4>Normal Priority</h4>
+            <h4 className="priority-label">Normal Priority</h4>
               <ListGroup>
                 {normalPriority.map((item) => {
                   const now = new Date();
@@ -205,7 +205,7 @@ const TodoList = () => {
         )}
         {lowPriority.length > 0 && (
           <div>
-            <h4>Low Priority</h4>
+            <h4 className="priority-label">Low Priority</h4>
               <ListGroup>
                   {lowPriority.map((item) => {
                     const now = new Date();
