@@ -3,6 +3,9 @@ import { Layout, Menu, theme } from 'antd';
 import ProgressBar from './ProgressBar';
 import CardGrids from './CardGrids';
 import ClassPage from '../ClassPage';
+import SidebarGlobal from '../components/SidebarGlobal';
+import WipPage from '../components/WipPage';
+import Dashboard from './Dashboard';
 
 const { Header, Content, Sider } = Layout;
 
@@ -11,10 +14,17 @@ const Lay = () => {
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const [centerContent, setContent] = useState(true);
+  const Dash = <Dashboard colorBgContainer={colorBgContainer} setterFunc={setterFunc}/>
+  const [centerContent, setContent] = useState(Dash);
+
+  const navContent = [ Dash, <WipPage title={'Profile'}/>, Dash, <WipPage title={'Announcements'}/>, <WipPage title ={'Groups'}/>]
 
   function setterFunc() {
-    setContent(false)    
+    setContent(<ClassPage/>)    
+  }
+
+  function navFunction(index) {
+    setContent(navContent[index])    
   }
 
   return (
@@ -37,30 +47,17 @@ const Lay = () => {
           width="10%"
           style={{
             background: colorBgContainer,
-            backgroundColor: 'red',
+            backgroundColor: 'black',
+            color: 'red',
+            fontWeight: 'bold'
           }}
         >
-          {/* This is where side icons go */}
+          <SidebarGlobal navFunction={navFunction}></SidebarGlobal>
         </Sider>
-
-        {centerContent ?
-        <Layout
-          style={{
-            padding: '0 2% 5%',
-            background: colorBgContainer,
-            backgroundColor: 'lightgreen',
-            height: '100%',
-          }}
-        >
-          <ProgressBar /><CardGrids setterFunc={setterFunc}/>
-
-        </Layout> :
-
-        <div style={{
-          width: '100%'
-        }}>
-          <ClassPage/>
-        </div> }
+        
+        <div style={{width: '100%'}}>
+          {centerContent}
+        </div>
 
       </Layout>
     </div>
