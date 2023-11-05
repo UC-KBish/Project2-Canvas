@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
 import { Layout, Menu, theme } from 'antd';
-import ProgressBar from './ProgressBar';
-import CardGrids from './CardGrids';
 import ClassPage from '../ClassPage';
 import SidebarGlobal from '../components/SidebarGlobal';
 import WipPage from '../components/WipPage';
 import Dashboard from './Dashboard';
+import Profile from '../components/Profile';
 
 const { Header, Content, Sider } = Layout;
 
@@ -17,7 +16,11 @@ const Lay = () => {
   const Dash = <Dashboard colorBgContainer={colorBgContainer} setterFunc={setterFunc}/>
   const [centerContent, setContent] = useState(Dash);
 
-  const navContent = [ Dash, <WipPage title={'Profile'}/>, Dash, <WipPage title={'Announcements'}/>, <WipPage title ={'Groups'}/>]
+  const navContent = [ Dash, 
+                      <Profile name='John Doe' />,
+                      Dash,
+                      <WipPage title={'Announcements'}/>,
+                      <WipPage title ={'Groups'}/>]
 
   function setterFunc() {
     setContent(<ClassPage/>)    
