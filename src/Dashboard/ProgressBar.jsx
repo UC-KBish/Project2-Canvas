@@ -31,9 +31,7 @@ const ProgressBar = () => {
     border: '1px solid grey',
     color: 'black',
     borderRadius: '15px',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
   };
 
   const filledBarStyle = {
