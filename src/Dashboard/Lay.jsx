@@ -6,6 +6,7 @@ import ClassPage from '../ClassPage';
 import SidebarGlobal from '../components/SidebarGlobal';
 import WipPage from '../components/WipPage';
 import Dashboard from './Dashboard';
+import AnnouncementsPage from '../Components/AnnouncementsPage/AnnouncementsPage';
 
 const { Header, Content, Sider } = Layout;
 
@@ -17,7 +18,7 @@ const Lay = () => {
   const Dash = <Dashboard colorBgContainer={colorBgContainer} setterFunc={setterFunc}/>
   const [centerContent, setContent] = useState(Dash);
 
-  const navContent = [ Dash, <WipPage title={'Profile'}/>, Dash, <WipPage title={'Announcements'}/>, <WipPage title ={'Groups'}/>]
+  const navContent = [ Dash, <WipPage title={'Profile'}/>, Dash, <AnnouncementsPage/>, <WipPage title ={'Groups'}/>]
 
   function setterFunc() {
     setContent(<ClassPage/>)    
