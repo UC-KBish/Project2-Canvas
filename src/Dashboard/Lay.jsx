@@ -48,29 +48,16 @@ const Lay = () => {
           style={{
             background: colorBgContainer,
             backgroundColor: 'black',
-            color: 'red',
             fontWeight: 'bold'
           }}
         >
           <SidebarGlobal navFunction={navFunction}></SidebarGlobal>
         </Sider>
         
-        <div style={{width: '80%'}}>
+        <div style={{width: '100%'}}>
           {centerContent}
         </div>
 
-        <Sider
-          width="20%"
-          style={{
-            background: colorBgContainer,
-            backgroundColor: 'red',
-            color: 'red',
-            fontWeight: 'bold'
-          }}
-        >
-          to do list implementation space
-          {/* right hand side bar// to do list implement */}
-        </Sider>
       </Layout>
     </div>
   );
