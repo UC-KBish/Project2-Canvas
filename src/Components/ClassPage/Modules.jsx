@@ -11,7 +11,7 @@ function Modules() {
                 </div>
                 <h2>Module 2 - Getting Started</h2>
                 <p>Prez 2</p>
-                {/* <button onClick={completedAssignment}>Woo</button> */}
+                <button onClick={completedAssignment}>Woo</button>
                 <button>Download All Files</button>
             </div>
         </div>

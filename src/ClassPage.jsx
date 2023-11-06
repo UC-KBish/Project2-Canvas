@@ -19,10 +19,18 @@ function ClassPage() {
   let navContent = [<ClassContentModule/>, <Modules/>, <Assignments/>, <Grades/>, <Zoom/>]
 
   const [centerContent, setContent] = useState(<ClassContentModule/>);
+  const [centerContent2, setContent2] = useState(null);
 
   function navFunction(index) {
-    setContent(navContent[index])
+    if (centerContent == null) {
+      setContent(navContent[index])
+      setContent2(null)
+    } else {
+      setContent(null)
+      setContent2(navContent[index])
+    }
   }
+
 
   return (
     <div id='main'>
@@ -33,7 +41,7 @@ function ClassPage() {
       </div>
       <div id='Center-Column'>
         <div className='ClassContentModuleContainer'>
-          {centerContent}
+          {centerContent == null ? centerContent2 : centerContent}
         </div>
       </div>
       <div id='Right-Column'>

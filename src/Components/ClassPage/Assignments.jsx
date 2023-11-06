@@ -1,5 +1,7 @@
 import { useState } from 'react';
 
+import Assignment1 from './Assignments/Assignment1';
+
 import assignments from './Assignments.json'
 
 function ContentPreview(props) {
@@ -24,6 +26,7 @@ function ContentPreview(props) {
 
 function Assignments() {
 
+    let assignmentPages = [<Assignment1/>]
     let assignmentsState = []
 
     assignments.forEach(() => {
@@ -32,6 +35,7 @@ function Assignments() {
     })
 
     const [state, setState] = useState(assignmentsState);
+    const [AssignmentPageState, setAssignmentPage] = useState(null);
 
     function updateState(index, value) {
 
@@ -52,17 +56,22 @@ function Assignments() {
     return (<>
         <div>
             <h1>Assignments</h1>
+            
+            {AssignmentPageState == null ?
             <div>
                 <div className="AssignmentModule Container">
                     <h2>Up Next</h2>
                     {assignments.map((assignment, index) => {
                         return (<>
                             <div className={!assignment.completed ? 'non-hidden-element' : 'hidden-element'}>
+                                <button onClick={() => setAssignmentPage(assignmentPages[0])}>
                                 <p>{assignment.name}</p>
+                                <p>{assignment.due}</p>
                                 <div>
                                     <button onClick={() => updateState(index, 1)}>Preview</button>
                                     <button onClick={() => updateState(index, 2)}>Submit</button>
                                 </div>
+                                </button>
                             </div>
                             <ContentPreview show={state[index]} parentShow={!assignment.completed}/>
                         </>)
@@ -85,6 +94,7 @@ function Assignments() {
                     })}
                 </div>
             </div>
+: AssignmentPageState}
         </div>
     </>)
 }
