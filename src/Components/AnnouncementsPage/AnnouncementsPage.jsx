@@ -55,53 +55,9 @@ function AnnouncementsPage() {
 
   return (
     <div>
-      <h1>Announcements Page</h1>
+      <h1>Announcements Page
 
-      <BootstrapAccordion>
-        <BootstrapAccordion.Item eventKey="recent">
-          <BootstrapAccordion.Header onClick={handleToggleRecentAccordion}>
-            Most Recent Announcements
-          </BootstrapAccordion.Header>
-          <BootstrapAccordion.Body style={{ display: openRecentAccordion ? 'block' : 'none' }}>
-          {mostRecentAnnouncements.map((announcement, index) => (
-          <p key={index}>{announcement}</p>  ))}
-          </BootstrapAccordion.Body>
-        </BootstrapAccordion.Item>
-      </BootstrapAccordion>
-      
-      <div>
-        <BootstrapAccordion>
-          <BootstrapAccordion.Item eventKey="0">
-            <BootstrapAccordion.Header onClick={() => handleToggleAccordion('0')}>
-              User Interface 1
-            </BootstrapAccordion.Header>
-            <BootstrapAccordion.Body style={{ display: openAccordions['0'] ? 'block' : 'none' }}>
-            {ui.map((announcement, index) => (
-          <p key={index}>{announcement}</p>  ))}
-            </BootstrapAccordion.Body>
-          </BootstrapAccordion.Item>
-          <BootstrapAccordion.Item eventKey="1">
-            <BootstrapAccordion.Header onClick={() => handleToggleAccordion('1')}>
-              Senior Design
-            </BootstrapAccordion.Header>
-            <BootstrapAccordion.Body style={{ display: openAccordions['1'] ? 'block' : 'none' }}>
-            {sd.map((announcement, index) => (
-          <p key={index}>{announcement}</p>  ))}
-            </BootstrapAccordion.Body>
-          </BootstrapAccordion.Item>
-          <BootstrapAccordion.Item eventKey="2">
-            <BootstrapAccordion.Header onClick={() => handleToggleAccordion('2')}>
-              Graphic Design
-            </BootstrapAccordion.Header>
-            <BootstrapAccordion.Body style={{ display: openAccordions['2'] ? 'block' : 'none' }}>
-            {gd.map((announcement, index) => (
-          <p key={index}>{announcement}</p>  ))}
-            </BootstrapAccordion.Body>
-          </BootstrapAccordion.Item>
-        </BootstrapAccordion>
-      </div>
-
-       <AnnouncementModal 
+      <AnnouncementModal 
        showModal={showModal}
        handleCloseModal={handleCloseModal}
        handleShowModal={handleShowModal}
@@ -110,6 +66,108 @@ function AnnouncementsPage() {
        announcement={announcement}
        setAnnouncement={setAnnouncement}
        handleAddAnnouncement={handleAddAnnouncement} ui={ui} sd={sd} gd={gd} setUI={setUI} setSD={setSD} setGD={setGD} />
+</h1>
+      <BootstrapAccordion>
+  <BootstrapAccordion.Item eventKey="recent">
+    <BootstrapAccordion.Header
+      onClick={handleToggleRecentAccordion}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        padding: "10px",
+        borderRadius: "10px",
+      }}
+    >
+      Most Recent Announcements
+      <span style={{ marginLeft: "auto" }}>&#9660;</span>
+    </BootstrapAccordion.Header>
+    <BootstrapAccordion.Body
+      style={{
+        display: openRecentAccordion ? "block" : "none",
+        width: "100%",
+        marginLeft: "2%",
+      }}
+    >
+      {mostRecentAnnouncements.slice(0, 4).map((announcement, index) => (
+        <p key={index}>{announcement}</p>
+      ))}
+    </BootstrapAccordion.Body>
+  </BootstrapAccordion.Item>
+  <BootstrapAccordion.Item eventKey="0">
+    <BootstrapAccordion.Header
+      onClick={() => handleToggleAccordion('0')}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        padding: "10px",
+        borderRadius: "10px",
+      }}
+    >
+      User Interface 1
+      <span style={{ marginLeft: "auto" }}>&#9660;</span>
+    </BootstrapAccordion.Header>
+    <BootstrapAccordion.Body
+      style={{ display: openAccordions['0'] ? 'block' : 'none', width: '100%', marginLeft: '2%' }}
+    >
+      {ui.map((announcement, index) => (
+        <p key={index}>{announcement}</p>
+      ))}
+    </BootstrapAccordion.Body>
+  </BootstrapAccordion.Item>
+  <BootstrapAccordion.Item eventKey="1">
+    <BootstrapAccordion.Header
+      onClick={() => handleToggleAccordion('1')}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        padding: "10px",
+        borderRadius: "10px",
+      }}
+    >
+      Senior Design
+      <span style={{ marginLeft: "auto" }}>&#9660;</span>
+    </BootstrapAccordion.Header>
+    <BootstrapAccordion.Body
+      style={{ display: openAccordions['1'] ? 'block' : 'none', width: '100%', marginLeft: '2%' }}
+    >
+      {sd.map((announcement, index) => (
+        <p key={index}>{announcement}</p>
+      ))}
+    </BootstrapAccordion.Body>
+  </BootstrapAccordion.Item>
+  <BootstrapAccordion.Item eventKey="2">
+    <BootstrapAccordion.Header
+      onClick={() => handleToggleAccordion('2')}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        width: "100%",
+        padding: "10px",
+        borderRadius: "10px",
+      }}
+    >
+      Graphic Design
+      <span style={{ marginLeft: "auto" }}>&#9660;</span>
+    </BootstrapAccordion.Header>
+    <BootstrapAccordion.Body
+      style={{ display: openAccordions['2'] ? 'block' : 'none', width: '100%', marginLeft: '2%' }}
+    >
+      {gd.map((announcement, index) => (
+        <p key={index}>{announcement}</p>
+      ))}
+    </BootstrapAccordion.Body>
+  </BootstrapAccordion.Item>
+</BootstrapAccordion>
+
+
+       
     </div>
   );
 }

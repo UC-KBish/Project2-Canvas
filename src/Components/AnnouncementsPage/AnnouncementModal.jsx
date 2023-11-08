@@ -19,9 +19,12 @@ function AnnouncementModal({
 
   return (
     <>
-      <Button variant="primary" onClick={handleShowModal}>
-        Add Announcement
-      </Button>
+      <Button
+        variant="btn-primary"
+        onClick={handleShowModal}
+        style={{ marginLeft: '55%'}}
+        > Add Announcement
+        </Button>
 
       <Modal show={showModal} onHide={handleCloseModal} style={{ width: '50%',  height: '50%', margin: 'auto', marginTop: '10%' }}>
         <Modal.Header closeButton>
