@@ -38,10 +38,9 @@ const iconButtonStyle = {
 
 function SidebarGlobal(props){    
     return <div>
-        <p>Sidebar</p>
         {buttons.map((button, index) => {
             return <button onClick={() => props.navFunction(index)} style={iconButtonStyle} key={button.id}>
-                <img src={button.icon} style={{width: '75%', color: 'red'}} alt={button.label}></img>
+                <img src={button.icon} style={{width: '75%', color: 'red', marginTop: '7.5%'}} alt={button.label}></img>
                 </button>
         })}
         
