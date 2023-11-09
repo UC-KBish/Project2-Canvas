@@ -33,17 +33,7 @@ const Lay = () => {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', height: '100vh' }}>
-      <Header
-        style={{
-          background: colorBgContainer,
-          backgroundColor: 'lightblue',
-          display: 'flex',
-          height: '10%',
-          padding: '0 10%',
-        }}
-      >
-        <h1>Dashboard</h1>
-      </Header>
+
     
 
       <Layout style={{ flex: '1 0 auto' }}>

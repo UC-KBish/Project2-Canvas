@@ -41,11 +41,11 @@ function ClassPage() {
         </div>
       </div>
       <div id='Right-Column'>
-      <ClassSemesterProgressModule weeksLeft='16'/>
+      <ClassSemesterProgressModule/>
+      <ClassStatsModule/>
       <div className='ToDoModule Container'>
       <TodoList/>
       </div>
-      <ClassStatsModule/>
       </div>
     </div>
   )

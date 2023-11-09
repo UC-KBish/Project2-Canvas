@@ -87,13 +87,13 @@
 #Right-Column {
     display: flex;
     flex-direction: column;
-    height: 100%
+    height: 100%;
 }
 
 .ClassSemesterProgressModule-Container {
     border-left: 2px solid black;
     border-bottom: 2px solid black;
-    max-width: 15em;
+    max-width: 18em;
 }
 
 .ToDoModule {
@@ -105,6 +105,7 @@
 
 .ClassStatsModuleContainer {
     border-left: 2px solid black;
+    border-bottom: 2px solid black;
 }
 
 

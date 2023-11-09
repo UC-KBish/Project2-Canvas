@@ -10,7 +10,7 @@ const cardStyle = {
   borderRadius: '20px',
   marginBottom: '2%',
   marginTop: '2%',
-  width: '20%',
+  width: '25%',
   height: '200px',
 }
 
@@ -26,7 +26,7 @@ function CardGrids(props) {
       color: 'inherit',
       font: 'inherit',
       width: '100%',
-      textAlign: 'inherit'
+      textAlign: 'inherit',
     }}>
       <Form>
         <Row>

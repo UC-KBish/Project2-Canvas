@@ -1,8 +1,9 @@
-function ClassStatsModule() {
+function ClassStatsModule(props) {
     return (
         <div className="ClassStatsModuleContainer Container">
             <h3>Class Stats</h3>
-            <p>Stat 1</p>
+            <p>Completed Assignments: <b>{props.assignments || '0'}</b></p>
+            <p>Completed Quizzes: <b>{props.quizzes || '0'}</b></p>
         </div>
     )
 }

@@ -11,10 +11,15 @@ function Dashboard(props) {
           style={{
             padding: '0 2% 5%',
             background: {color},
-            backgroundColor: 'lightgreen',
+            backgroundColor: 'whitesmoke',
             height: '100%',
           }}
         >
+        
+        <div>
+          <h1>Dashboard</h1>
+        </div>
+
           <ProgressBar /><CardGrids setterFunc={props.setterFunc}/>
 
         </Layout>
