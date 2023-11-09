@@ -2,18 +2,39 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Card from 'react-bootstrap/Card';
+import { Cascader } from 'antd';
+
+const class_info = [
+  {
+    class_name: "User Interface Design",
+    class_number: "CS5167",
+    class_professor: "Dr. Jillian Aurisano"
+  },
+
+  {
+    class_name: "Senior Design",
+    class_number: "CS5001",
+    class_professor: "Dr. Professor"
+  },
+
+  {
+    class_name: "Computer Graphics",
+    class_number: "CS5678",
+    class_professor: "Dr. Jillian Aurisano"
+  }
+]
+
 
 const cardStyle = {
   backgroundColor: 'white',
-  border: '3px solid red',
+  backgroundImage: 'linear-gradient(#CC2929, white)',
+  border: '3px solid black',
   padding: '2%',
   borderRadius: '20px',
-  marginBottom: '2%',
-  marginTop: '2%',
-  width: '25%',
+  margin: '2%',
+  width: '35%',
   height: '200px',
 }
-
 
 function CardGrids(props) {
   return (
@@ -28,37 +49,23 @@ function CardGrids(props) {
       width: '100%',
       textAlign: 'inherit',
     }}>
-      <Form>
-        <Row>
-          <Col>
 
-            <Card style={cardStyle}>
-              <Card.Body>
-                <h3>Class Name 1</h3>
-                <p>Description of the class</p>
-              </Card.Body>
+      <div
+        style={{
+          display: 'flex',
+          direction: 'column',
+          flexWrap: 'wrap'
+        }}>
+
+        {class_info.map((this_class, index) => {
+            return <Card style={cardStyle}>
+              <h2>{this_class.class_name}</h2>
+              <p>{this_class.class_number}</p>
+              <p>{this_class.class_professor}</p>
             </Card>
-          </Col>
-          <Col >
-            <Card style={cardStyle}>
-              <Card.Body>
-                <h3>Class Name 2</h3>
-                <p>Description of the class</p>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <Card style={cardStyle}>
-              <Card.Body>
-                <h3>Class Name 3</h3>
-                <p>Description of the class</p>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Form>
+        })}
+
+      </div>
     </button>
   );
 }

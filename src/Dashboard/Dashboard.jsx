@@ -1,6 +1,8 @@
-import Layout from 'antd/es/layout/layout';
+import Layout, { Content } from 'antd/es/layout/layout';
 import ProgressBar from './ProgressBar';
 import CardGrids from './CardGrids';
+import Sider from 'antd/es/layout/Sider';
+import TodoList from '../Components/todolist/ToDoList';
 
 
 function Dashboard(props) {
@@ -11,16 +13,28 @@ function Dashboard(props) {
           style={{
             padding: '0 2% 5%',
             background: {color},
-            backgroundColor: 'whitesmoke',
-            height: '100%',
+            backgroundColor: 'white',
+            height: '100vh'
           }}
         >
-        
-        <div>
-          <h1>Dashboard</h1>
-        </div>
+          <Content>
+            <div>
+              <h1>Dashboard</h1>
+            </div>
 
-          <ProgressBar /><CardGrids setterFunc={props.setterFunc}/>
+            <ProgressBar /><CardGrids setterFunc={props.setterFunc}/>
+          </Content>
+
+          <Sider width='25%'
+            style={{
+              backgroundColor: 'white',
+              borderLeft: '2px solid black',
+              padding: '2%',
+              width: '20%',
+              height: '100vh'
+            }}>
+            <TodoList/>
+          </Sider>
 
         </Layout>
     </div>
