@@ -378,13 +378,21 @@ const TodoList = ({ classPage }) => {
               <Form.Label>Class for task:</Form.Label>
               <Form.Control
                 as="select"
-                value={classPageTasks || classPage} // Default to classpage value for component if classPage is not set
+                value={classPageTasks || classPage}
                 onChange={(e) => setClassPageTasks(e.target.value)}
+                disabled={classPage !== 'global'}
               >
-                <option value="global">No Class</option>
-                <option value="class1">User Interface Design</option>
-                <option value="class2">Senior Design</option>
-                <option value="class3">Computer Graphics</option>
+                {classPage === 'global' && (
+                  <>
+                    <option value="global">No Class</option>
+                    <option value="class1">User Interface Design</option>
+                    <option value="class2">Senior Design</option>
+                    <option value="class3">Computer Graphics</option>
+                  </>
+                )}
+                {classPage === 'class1' && <option value="class1">User Interface Design</option>}
+                {classPage === 'class2' && <option value="class2">Senior Design</option>}
+                {classPage === 'class3' && <option value="class3">Computer Graphics</option>}
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formDescription">
