@@ -1,0 +1,228 @@
+{
+    "Assignments": [
+        {
+            "name": "Assignment 1",
+            "due": "11/3/2023",
+            "completed": false
+        },
+        {
+            "name": "Assignment 2",
+            "due": null,
+            "completed": false
+        },
+        {
+            "name": "Assignment 3",
+            "due": null,
+            "completed": false
+        },
+        {
+            "name": "Assignment 4",
+            "due": null,
+            "completed": true
+        }
+    ],
+    "Modules": [
+        [
+            "Item 9",
+            "Item 8",
+            "Item 7"
+        ],
+        [
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6",
+            "Item 4",
+            "Item 5",
+            "Item 6"
+        ],
+        [
+            "Item 1",
+            "Item 2",
+            "Item 3"
+        ],
+        [
+            "Item 9",
+            "Item 8",
+            "Item 7"
+        ],
+        [
+            "Item 9",
+            "Item 8",
+            "Item 7"
+        ],
+        [
+            "Item 9",
+            "Item 8",
+            "Item 7"
+        ],
+        [
+            "Item 9",
+            "Item 8",
+            "Item 7"
+        ],
+        [
+            "Item 9",
+            "Item 8",
+            "Item 7"
+        ]
+    ],
+    "Zoom": [
+        {
+            "Day": "Today (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 8 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 10 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 13 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 15 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 8 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 10 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 13 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        },
+        {
+            "Day": "Wed, Nov 15 (Recurring)",
+            "Time": "1:25 PM",
+            "Topic": "(23FS-Full) USER INTERFACE I (001)",
+            "ID": "924 5930 4063"
+        }
+    ],
+    "Grades": {
+        "Items": [
+            {
+                "Name": "Assignment 1",
+                "Grade": 80,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Assignment 2",
+                "Grade": 92,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Quiz 1",
+                "Grade": 30,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Midterm Exam",
+                "Grade": 110,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Assignment 3",
+                "Grade": 50,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Quiz 2",
+                "Grade": 70,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Final Exam",
+                "Grade": 78,
+                "Possible": 100,
+                "Type": "Final Exam"
+            },
+            {
+                "Name": "Assignment 4",
+                "Grade": 88,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Assignment 5",
+                "Grade": 92,
+                "Possible": 100,
+                "Type": "Assignments"
+            },
+            {
+                "Name": "Quiz 3",
+                "Grade": 85,
+                "Possible": 100,
+                "Type": "Assignments"
+            }
+        ],
+        "Weights": [
+            {
+                "Type": "Assignments",
+                "Weight": 0.1
+            },
+            {
+                "Type": "Participation",
+                "Weight": 0.05
+            },
+            {
+                "Type": "Projects",
+                "Weight": 0.75
+            },
+            {
+                "Type": "Final Exam",
+                "Weight": 0.1
+            }
+        ]
+    }
+}
