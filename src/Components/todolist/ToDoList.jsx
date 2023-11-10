@@ -110,27 +110,42 @@ const TodoList = ({ classPage }) => {
       setShowModal(false);
     }
   };
-
   useEffect(() => {
     // Set tasks based on the classPage prop
-    let filteredTasks = [];
+    let filteredHighPriority = [];
+    let filteredNormalPriority = [];
+    let filteredLowPriority = [];
+  
     switch (classPage) {
       case 'class1':
-        filteredTasks = highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
+        filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
+        filteredNormalPriority = normalPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
+        filteredLowPriority = lowPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
         break;
       case 'class2':
-        filteredTasks = normalPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
+        filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
+        filteredNormalPriority = normalPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
+        filteredLowPriority = lowPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
         break;
       case 'class3':
-        filteredTasks = lowPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
+        filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
+        filteredNormalPriority = normalPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
+        filteredLowPriority = lowPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
         break;
       case 'global':
-        filteredTasks = [...highPriority, ...normalPriority, ...lowPriority];
+        filteredHighPriority = highPriority;
+        filteredNormalPriority = normalPriority;
+        filteredLowPriority = lowPriority;
         break;
       default:
-        filteredTasks = [];
+        filteredHighPriority = [];
+        filteredNormalPriority = [];
+        filteredLowPriority = [];
     }
-    setClassPageTasks(filteredTasks);
+  
+    setHighPriority(filteredHighPriority);
+    setNormalPriority(filteredNormalPriority);
+    setLowPriority(filteredLowPriority);
   }, [classPage, highPriority, normalPriority, lowPriority]);
   return (
     <div className="todo-list-container">
