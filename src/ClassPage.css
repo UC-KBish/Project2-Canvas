@@ -133,3 +133,77 @@
 .hidden-element {
     display: none !important;
   }
+
+
+  .grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(22vw, 1fr));
+    gap: 10px;
+    grid-auto-rows: minmax(10vw, auto);
+  }
+
+  .grid-item {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  .draggableList {
+    list-style-type: none;
+    /* Remove default padding and margin */
+    padding: 0;
+    margin: 0;
+  }
+
+.ClassZoom-Container > img {
+    margin-top: 2rem;
+}
+
+.ClassZoom-Container .zoom-table {
+    border-collapse: collapse;
+    border: none;
+    width: 100%;
+}
+
+td, tr {
+    padding: 8px;
+    text-align: left;
+    border-bottom: solid;
+    border-width: 1px;
+}
+
+
+.ClassZoom-Container .start-time {
+    margin-top: 0;
+    color: #555555;
+}
+
+.ClassZoom-Container .start-day {
+    margin-bottom: 0;
+}
+
+.ClassZoom-Container .button-cell {
+    align-items: center;
+}
+
+.ClassGrade-Container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #c0c0c0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    align-items: center;
+}
+
+.ClassGrade-Container .grade-name {
+    margin-bottom: 0;
+}
+
+.ClassGrade-Container .grade-type {
+    margin-top: 0;
+    font-size: smaller;
+    color: #202020;
+}
