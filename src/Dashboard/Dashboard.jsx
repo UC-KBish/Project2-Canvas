@@ -33,7 +33,7 @@ function Dashboard(props) {
               width: '20%',
               height: '100vh'
             }}>
-            <TodoList/>
+            <TodoList classPage="global" />
           </Sider>
 
         </Layout>

@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ListGroup, Modal, Button, Form, Row, Col } from 'react-bootstrap';
-import { format, formatDistanceToNow } from 'date-fns';
+import { format } from 'date-fns';
 import './ToDoList.css';
 
-const TodoList = () => {
+const TodoList = ({ classPage }) => {
   const [showModal, setShowModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
   const [taskName, setTaskName] = useState('');
@@ -11,22 +11,26 @@ const TodoList = () => {
   const [priority, setPriority] = useState('low');
   const [description, setDescription] = useState('');
   const [completedTasks, setCompletedTasks] = useState([]);
+  const [classPageTasks, setClassPageTasks] = useState([]);
 
   const [highPriority, setHighPriority] = useState([
-    { id: 1, name: 'Task 1', priority: 'high', dueDate: '2023-11-10T00:00:00', description: 'Description for Task 1' },
-    { id: 2, name: 'Task 2', priority: 'high', dueDate: '2023-11-12T00:00:00', description: 'Description for Task 2' },
-    { id: 8, name: 'Task 8', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Task 7'}
+    { id: 1, name: 'Task 1', priority: 'high', dueDate: '2023-11-10T00:00:00', description: 'Description for Task 1', classPageTasks: 'class1' },
+    { id: 2, name: 'Task 2', priority: 'high', dueDate: '2023-11-12T00:00:00', description: 'Description for Task 2', classPageTasks: 'class2' },
+    { id: 3, name: 'Task 3', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Task 3', classPageTasks: 'class3' },
+    { id: 8, name: 'Task 8', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Task 8', classPageTasks: 'global' }
   ]);
   
   const [normalPriority, setNormalPriority] = useState([
-    { id: 3, name: 'Task 3', priority: 'normal', dueDate: '2023-11-15T00:00:00', description: 'Description for Task 3' },
-    { id: 7, name: 'Task 7', priority: 'normal', dueDate: '2023-11-07T00:00:00', description: 'Description for Task 7' }
+    { id: 4, name: 'Task 4', priority: 'normal', dueDate: '2023-11-15T00:00:00', description: 'Description for Task 4', classPageTasks: 'class1' },
+    { id: 5, name: 'Task 5', priority: 'normal', dueDate: '2023-11-25T00:00:00', description: 'Description for Task 5', classPageTasks: 'class2' },
+    { id: 6, name: 'Task 6', priority: 'normal', dueDate: '2023-11-30T00:00:00', description: 'Description for Task 6', classPageTasks: 'class3' },
+    { id: 7, name: 'Task 7', priority: 'normal', dueDate: '2023-11-07T00:00:00', description: 'Description for Task 7', classPageTasks: 'global' }
   ]);
   
   const [lowPriority, setLowPriority] = useState([
-    { id: 4, name: 'Task 4', priority: 'low', dueDate: '2023-11-20T00:00:00', description: 'Description for Task 4' },
-    { id: 5, name: 'Task 5', priority: 'low', dueDate: '2023-11-25T00:00:00', description: 'Description for Task 5' },
-    { id: 6, name: 'Task 6', priority: 'low', dueDate: '2023-11-30T00:00:00', description: 'Description for Task 6' }
+    { id: 9, name: 'Task 9', priority: 'low', dueDate: '2023-11-20T00:00:00', description: 'Description for Task 9', classPageTasks: 'class1' },
+    { id: 10, name: 'Task 10', priority: 'low', dueDate: '2023-11-25T00:00:00', description: 'Description for Task 10', classPageTasks: 'class2' },
+    { id: 11, name: 'Task 11', priority: 'low', dueDate: '2023-11-30T00:00:00', description: 'Description for Task 11', classPageTasks: 'class3' }
   ]);
 
   const markTaskAsDone = (task) => {
@@ -40,6 +44,7 @@ const TodoList = () => {
     setDueDate(task ? task.dueDate.slice(0, 10) : '');
     setPriority(task ? task.priority : 'low');
     setDescription(task ? task.description : '');
+    setClassPageTasks(task ? task.classPageTasks : 'global'); // Use 'global' as a default if classPage is not set
     setShowModal(true);
   };
 
@@ -50,9 +55,10 @@ const TodoList = () => {
   const handleSave = () => {
     const updatedTask = {
       name: taskName,
-      dueDate: `${dueDate}T00:00:00`, // Set the time to midnight (00:00:00 ) so relative time is not interfered with
+      dueDate: `${dueDate}T00:00:00`,
       priority: priority || 'normal',
-      description: description
+      description: description,
+      classPageTasks: classPageTasks || null,
     };
 
     if (selectedTask) {
@@ -73,7 +79,8 @@ const TodoList = () => {
         name: taskName,
         priority: priority,
         dueDate: dueDate,
-        description: description
+        description: description,
+        classPageTasks: classPageTasks,
       };
 
       if (priority === 'high') {
@@ -103,6 +110,26 @@ const TodoList = () => {
       setShowModal(false);
     }
   };
+
+  useEffect(() => {
+    // Set tasks based on the classPage prop
+    switch (classPage) {
+      case 'class1':
+        setClassPageTasks(highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global'));
+        break;
+      case 'class2':
+        setClassPageTasks(normalPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global'));
+        break;
+      case 'class3':
+        setClassPageTasks(lowPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global'));
+        break;
+      case 'global':
+        setClassPageTasks([...highPriority, ...normalPriority, ...lowPriority]);
+        break;
+      default:
+        setClassPageTasks([]);
+    }
+  }, [classPage, highPriority, normalPriority, lowPriority]);
 
   return (
     <div className="todo-list-container">
@@ -330,6 +357,20 @@ const TodoList = () => {
                 <option value="high">High</option>
               </Form.Control>
             </Form.Group>
+            {/* Class Page Dropdown in Modal */}
+            <Form.Group controlId="formClassPageModal">
+              <Form.Label>Class Page:</Form.Label>
+              <Form.Control
+                as="select"
+                value={classPageTasks || 'global'} // Default to 'global' if classPage is not set
+                onChange={(e) => setClassPageTasks(e.target.value)}
+              >
+                <option value="global">Global</option>
+                <option value="class1">Class 1</option>
+                <option value="class2">Class 2</option>
+                <option value="class3">Class 3</option>
+              </Form.Control>
+            </Form.Group>
             <Form.Group controlId="formDescription">
               <Form.Label className="description">Description:</Form.Label>
               <Form.Control
@@ -360,7 +401,7 @@ const TodoList = () => {
           )}
         </Modal.Footer>
       </Modal>
-      )}
+    )}
     </div>
   );
 };
