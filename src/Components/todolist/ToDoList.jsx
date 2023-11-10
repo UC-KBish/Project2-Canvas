@@ -44,7 +44,7 @@ const TodoList = ({ classPage }) => {
     setDueDate(task ? task.dueDate.slice(0, 10) : '');
     setPriority(task ? task.priority : 'low');
     setDescription(task ? task.description : '');
-    setClassPageTasks(task ? task.classPageTasks : 'global'); // Use 'global' as a default if classPage is not set
+    setClassPageTasks(task ? task.classPageTasks : classPage ||  'global'); // Use 'global' as a default if classPage is not set
     setShowModal(true);
   };
 
@@ -113,24 +113,25 @@ const TodoList = ({ classPage }) => {
 
   useEffect(() => {
     // Set tasks based on the classPage prop
+    let filteredTasks = [];
     switch (classPage) {
       case 'class1':
-        setClassPageTasks(highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global'));
+        filteredTasks = highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
         break;
       case 'class2':
-        setClassPageTasks(normalPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global'));
+        filteredTasks = normalPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
         break;
       case 'class3':
-        setClassPageTasks(lowPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global'));
+        filteredTasks = lowPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
         break;
       case 'global':
-        setClassPageTasks([...highPriority, ...normalPriority, ...lowPriority]);
+        filteredTasks = [...highPriority, ...normalPriority, ...lowPriority];
         break;
       default:
-        setClassPageTasks([]);
+        filteredTasks = [];
     }
+    setClassPageTasks(filteredTasks);
   }, [classPage, highPriority, normalPriority, lowPriority]);
-
   return (
     <div className="todo-list-container">
       <div className='buttonlabelcontainer'>
@@ -359,16 +360,16 @@ const TodoList = ({ classPage }) => {
             </Form.Group>
             {/* Class Page Dropdown in Modal */}
             <Form.Group controlId="formClassPageModal">
-              <Form.Label>Class Page:</Form.Label>
+              <Form.Label>Class for task:</Form.Label>
               <Form.Control
                 as="select"
-                value={classPageTasks || 'global'} // Default to 'global' if classPage is not set
+                value={classPageTasks || classPage} // Default to classpage value for component if classPage is not set
                 onChange={(e) => setClassPageTasks(e.target.value)}
               >
-                <option value="global">Global</option>
-                <option value="class1">Class 1</option>
-                <option value="class2">Class 2</option>
-                <option value="class3">Class 3</option>
+                <option value="global">No Class</option>
+                <option value="class1">User Interface Design</option>
+                <option value="class2">Senior Design</option>
+                <option value="class3">Computer Graphics</option>
               </Form.Control>
             </Form.Group>
             <Form.Group controlId="formDescription">
