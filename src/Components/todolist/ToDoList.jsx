@@ -10,29 +10,49 @@ const TodoList = ({ classPage }) => {
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState('low');
   const [description, setDescription] = useState('');
-  const [completedTasks, setCompletedTasks] = useState([]);
+  const [completedTasks, setCompletedTasks] = useState([
+    { id: 22, name: 'Completed Task 1 (UI Design)', priority: 'low', dueDate: '2023-11-01T00:00:00', description: 'Description for Completed Task 1', classPageTasks: 'class1' },
+    { id: 23, name: 'Completed Task 2 (UI Design)', priority: 'normal', dueDate: '2023-11-02T00:00:00', description: 'Description for Completed Task 2', classPageTasks: 'class1' },
+    { id: 24, name: 'Completed Task 3 (UI Design)', priority: 'high', dueDate: '2023-11-03T00:00:00', description: 'Description for Completed Task 3', classPageTasks: 'class1' },
+    { id: 25, name: 'Completed Task 4 (Senior Design)', priority: 'low', dueDate: '2023-11-04T00:00:00', description: 'Description for Completed Task 4', classPageTasks: 'class2' },
+    { id: 26, name: 'Completed Task 5 (Senior Design)', priority: 'normal', dueDate: '2023-11-05T00:00:00', description: 'Description for Completed Task 5', classPageTasks: 'class2' },
+    { id: 27, name: 'Completed Task 6 (Senior Design)', priority: 'high', dueDate: '2023-11-06T00:00:00', description: 'Description for Completed Task 6', classPageTasks: 'class2' },
+    { id: 28, name: 'Completed Task 7 (Computer Graphics)', priority: 'low', dueDate: '2023-11-07T00:00:00', description: 'Description for Completed Task 7', classPageTasks: 'class3' },
+    { id: 29, name: 'Completed Task 8 (Computer Graphics)', priority: 'normal', dueDate: '2023-11-08T00:00:00', description: 'Description for Completed Task 8', classPageTasks: 'class3' },
+    { id: 30, name: 'Completed Task 9 (Computer Graphics)', priority: 'high', dueDate: '2023-11-09T00:00:00', description: 'Description for Completed Task 9', classPageTasks: 'class3' },
+  ]);
   const [classPageTasks, setClassPageTasks] = useState([]);
 
   const [highPriority, setHighPriority] = useState([
-    { id: 1, name: 'Task 1', priority: 'high', dueDate: '2023-11-10T00:00:00', description: 'Description for Task 1', classPageTasks: 'class1' },
-    { id: 2, name: 'Task 2', priority: 'high', dueDate: '2023-11-12T00:00:00', description: 'Description for Task 2', classPageTasks: 'class2' },
-    { id: 3, name: 'Task 3', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Task 3', classPageTasks: 'class3' },
-    { id: 8, name: 'Task 8', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Task 8', classPageTasks: 'global' }
+    { id: 1, name: 'UI Design Assignment 1', priority: 'high', dueDate: '2023-11-10T00:00:00', description: 'Description for UI Design Assignment 1', classPageTasks: 'class1' },
+    { id: 2, name: 'Senior Design Project 1', priority: 'high', dueDate: '2023-11-12T00:00:00', description: 'Description for Senior Design Project 1', classPageTasks: 'class2' },
+    { id: 3, name: 'Computer Graphics Task 1', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Computer Graphics Task 1', classPageTasks: 'class3' },
+    { id: 4, name: 'UI Design Assignment 2', priority: 'high', dueDate: '2023-11-15T00:00:00', description: 'Description for UI Design Assignment 2', classPageTasks: 'class1' },
+    { id: 5, name: 'Senior Design Project 2', priority: 'high', dueDate: '2023-11-25T00:00:00', description: 'Description for Senior Design Project 2', classPageTasks: 'class2' },
+    { id: 6, name: 'Computer Graphics Task 2', priority: 'high', dueDate: '2023-11-30T00:00:00', description: 'Description for Computer Graphics Task 2', classPageTasks: 'class3' },
+    { id: 7, name: 'Global Task 1', priority: 'high', dueDate: '2023-11-20T00:00:00', description: 'Description for Global Task 1', classPageTasks: 'global' },
   ]);
   
   const [normalPriority, setNormalPriority] = useState([
-    { id: 4, name: 'Task 4', priority: 'normal', dueDate: '2023-11-15T00:00:00', description: 'Description for Task 4', classPageTasks: 'class1' },
-    { id: 5, name: 'Task 5', priority: 'normal', dueDate: '2023-11-25T00:00:00', description: 'Description for Task 5', classPageTasks: 'class2' },
-    { id: 6, name: 'Task 6', priority: 'normal', dueDate: '2023-11-30T00:00:00', description: 'Description for Task 6', classPageTasks: 'class3' },
-    { id: 7, name: 'Task 7', priority: 'normal', dueDate: '2023-11-07T00:00:00', description: 'Description for Task 7', classPageTasks: 'global' }
+    { id: 8, name: 'Global Task 2', priority: 'normal', dueDate: '2023-11-07T00:00:00', description: 'Description for Global Task 2', classPageTasks: 'global' },
+    { id: 9, name: 'Computer Graphics Task 3', priority: 'normal', dueDate: '2023-11-10T00:00:00', description: 'Description for Computer Graphics Task 3', classPageTasks: 'class3' },
+    { id: 10, name: 'UI Design Assignment 4', priority: 'normal', dueDate: '2023-11-22T00:00:00', description: 'Description for UI Design Assignment 4', classPageTasks: 'class1' },
+    { id: 11, name: 'Senior Design Project 4', priority: 'normal', dueDate: '2023-11-28T00:00:00', description: 'Description for Senior Design Project 4', classPageTasks: 'class2' },
+    { id: 12, name: 'Global Task 3', priority: 'normal', dueDate: '2023-11-15T00:00:00', description: 'Description for Global Task 3', classPageTasks: 'global' },
+    { id: 13, name: 'UI Design Assignment 5', priority: 'normal', dueDate: '2023-11-18T00:00:00', description: 'Description for UI Design Assignment 5', classPageTasks: 'class1' },
+    { id: 14, name: 'Senior Design Project 5', priority: 'normal', dueDate: '2023-11-20T00:00:00', description: 'Description for Senior Design Project 5', classPageTasks: 'class2' },
   ]);
   
   const [lowPriority, setLowPriority] = useState([
-    { id: 9, name: 'Task 9', priority: 'low', dueDate: '2023-11-20T00:00:00', description: 'Description for Task 9', classPageTasks: 'class1' },
-    { id: 10, name: 'Task 10', priority: 'low', dueDate: '2023-11-25T00:00:00', description: 'Description for Task 10', classPageTasks: 'class2' },
-    { id: 11, name: 'Task 11', priority: 'low', dueDate: '2023-11-30T00:00:00', description: 'Description for Task 11', classPageTasks: 'class3' }
+    { id: 15, name: 'Computer Graphics Task 5', priority: 'low', dueDate: '2023-11-25T00:00:00', description: 'Description for Computer Graphics Task 5', classPageTasks: 'class3' },
+    { id: 16, name: 'UI Design Assignment 6', priority: 'low', dueDate: '2023-11-30T00:00:00', description: 'Description for UI Design Assignment 6', classPageTasks: 'class1' },
+    { id: 17, name: 'Senior Design Project 6', priority: 'low', dueDate: '2023-11-28T00:00:00', description: 'Description for Senior Design Project 6', classPageTasks: 'class2' },
+    { id: 18, name: 'Global Task 4', priority: 'low', dueDate: '2023-11-10T00:00:00', description: 'Description for Global Task 4', classPageTasks: 'global' },
+    { id: 19, name: 'UI Design Assignment 7', priority: 'low', dueDate: '2023-11-22T00:00:00', description: 'Description for UI Design Assignment 7', classPageTasks: 'class1' },
+    { id: 20, name: 'Senior Design Project 7', priority: 'low', dueDate: '2023-11-18T00:00:00', description: 'Description for Senior Design Project 7', classPageTasks: 'class2' },
+    { id: 21, name: 'Computer Graphics Task 7', priority: 'low', dueDate: '2023-11-15T00:00:00', description: 'Description for Computer Graphics Task 7', classPageTasks: 'class3' },
   ]);
-
+  
   const markTaskAsDone = (task) => {
     setCompletedTasks([...completedTasks, task]);
     handleDelete(); // This will delete the task from the original list
@@ -115,37 +135,44 @@ const TodoList = ({ classPage }) => {
     let filteredHighPriority = [];
     let filteredNormalPriority = [];
     let filteredLowPriority = [];
+    let filteredCompletedTasks = [];
   
     switch (classPage) {
       case 'class1':
         filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
         filteredNormalPriority = normalPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
         filteredLowPriority = lowPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
+        filteredCompletedTasks = completedTasks.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global')
         break;
       case 'class2':
         filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
         filteredNormalPriority = normalPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
         filteredLowPriority = lowPriority.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global');
+        filteredCompletedTasks = completedTasks.filter(task => task.classPageTasks === 'class2' || task.classPageTasks === 'global')
         break;
       case 'class3':
         filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
         filteredNormalPriority = normalPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
         filteredLowPriority = lowPriority.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global');
+        filteredCompletedTasks = completedTasks.filter(task => task.classPageTasks === 'class3' || task.classPageTasks === 'global')
         break;
       case 'global':
         filteredHighPriority = highPriority;
         filteredNormalPriority = normalPriority;
         filteredLowPriority = lowPriority;
+        filteredCompletedTasks = completedTasks;
         break;
       default:
         filteredHighPriority = [];
         filteredNormalPriority = [];
         filteredLowPriority = [];
+        filteredCompletedTasks = [];
     }
   
     setHighPriority(filteredHighPriority);
     setNormalPriority(filteredNormalPriority);
     setLowPriority(filteredLowPriority);
+    setCompletedTasks(filteredCompletedTasks);
   }, [classPage, highPriority, normalPriority, lowPriority]);
   return (
     <div className="todo-list-container">
