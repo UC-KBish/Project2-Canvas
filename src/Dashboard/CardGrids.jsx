@@ -47,14 +47,16 @@ function CardGrids(props) {
 
       {class_info.map((this_class, index) => {
         return (
-          <button onClick={() => props.setterFunc(index)} className="hidden-button">
 
-            <Card style={cardStyle}>
+          <Card style={cardStyle}>
+            <button onClick={() => props.setterFunc(index)} className="hidden-button">
+
               <h2>{this_class.class_name}</h2>
               <p>{this_class.class_number}</p>
               <p>{this_class.class_professor}</p>
-            </Card>
-          </button>
+
+            </button>
+          </Card>
         )
       })}
 

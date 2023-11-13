@@ -51,8 +51,8 @@ function ClassPage(props) {
       <div id='Right-Column'>
         <ClassSemesterProgressModule />
         <ClassStatsModule />
-        <div className='ToDoModule Container'>
-          <TodoList classPage="class1" />
+        <div className='ToDoModule ClassPage-Container'>
+          <TodoList classPage={["class1", "class2", "class3"][props.ClassID]} />
         </div>
       </div>
     </div>

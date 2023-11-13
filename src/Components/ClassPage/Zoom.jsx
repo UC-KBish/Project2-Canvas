@@ -1,7 +1,7 @@
 import classData from '../../data.json'
 
-function Zoom() {
-    const zoomData = classData['Zoom']
+function Zoom(props) {
+    const zoomData = classData[props.ClassID]['Zoom']
 
     return (<>
         <div className="ClassZoom-Container">
