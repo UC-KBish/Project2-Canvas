@@ -74,44 +74,34 @@ const TodoList = ({ classPage }) => {
 
   const handleSave = () => {
     const updatedTask = {
+      id: selectedTask ? selectedTask.id : Date.now(),
       name: taskName,
       dueDate: `${dueDate}T00:00:00`,
       priority: priority || 'normal',
       description: description,
       classPageTasks: classPageTasks || null,
     };
-
+  
     if (selectedTask) {
-      // Update existing task
-      const updatedTasks = (selectedTask.priority === 'high')
-        ? highPriority.map(task => (task.id === selectedTask.id ? updatedTask : task))
-        : (selectedTask.priority === 'normal')
-          ? normalPriority.map(task => (task.id === selectedTask.id ? updatedTask : task))
-          : lowPriority.map(task => (task.id === selectedTask.id ? updatedTask : task));
-
-      setHighPriority((prevState) => (selectedTask.priority === 'high' ? updatedTasks : prevState));
-      setNormalPriority((prevState) => (selectedTask.priority === 'normal' ? updatedTasks : prevState));
-      setLowPriority((prevState) => (selectedTask.priority === 'low' ? updatedTasks : prevState));
-    } else {
-      // Add new task
-      const newTask = {
-        id: Date.now(),
-        name: taskName,
-        priority: priority,
-        dueDate: dueDate,
-        description: description,
-        classPageTasks: classPageTasks,
-      };
-
-      if (priority === 'high') {
-        setHighPriority((prevState) => [...prevState, newTask]);
-      } else if (priority === 'normal') {
-        setNormalPriority((prevState) => [...prevState, newTask]);
-      } else if (priority === 'low') {
-        setLowPriority((prevState) => [...prevState, newTask]);
+      // If it's an existing task, delete it from the old priority list
+      if (selectedTask.priority === 'high') {
+        setHighPriority((prevState) => prevState.filter(task => task.id !== selectedTask.id));
+      } else if (selectedTask.priority === 'normal') {
+        setNormalPriority((prevState) => prevState.filter(task => task.id !== selectedTask.id));
+      } else if (selectedTask.priority === 'low') {
+        setLowPriority((prevState) => prevState.filter(task => task.id !== selectedTask.id));
       }
     }
-
+  
+    // Add the updated task to the appropriate priority list
+    if (updatedTask.priority === 'high') {
+      setHighPriority((prevState) => [...prevState, updatedTask]);
+    } else if (updatedTask.priority === 'normal') {
+      setNormalPriority((prevState) => [...prevState, updatedTask]);
+    } else if (updatedTask.priority === 'low') {
+      setLowPriority((prevState) => [...prevState, updatedTask]);
+    }
+  
     setShowModal(false);
   };
 
@@ -136,7 +126,7 @@ const TodoList = ({ classPage }) => {
     let filteredNormalPriority = [];
     let filteredLowPriority = [];
     let filteredCompletedTasks = [];
-  
+
     switch (classPage) {
       case 'class1':
         filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
@@ -168,12 +158,14 @@ const TodoList = ({ classPage }) => {
         filteredLowPriority = [];
         filteredCompletedTasks = [];
     }
-  
+
+    // Update state only when necessary
     setHighPriority(filteredHighPriority);
     setNormalPriority(filteredNormalPriority);
     setLowPriority(filteredLowPriority);
     setCompletedTasks(filteredCompletedTasks);
-  }, [classPage, highPriority, normalPriority, lowPriority]);
+  }, [classPage]); // Only include classPage as a dependency
+
   return (
     <div className="todo-list-container">
       <div className='buttonlabelcontainer'>
@@ -424,7 +416,7 @@ const TodoList = ({ classPage }) => {
             </Form.Group>
             <Form.Group controlId="formDescription" style={{alignItems: 'flex-start', display: 'flex', paddingTop: '6px'}}>
               <Form.Label className="description">Description:</Form.Label>
-              <Form.Control classname="descriptionBox"
+              <Form.Control className="descriptionBox"
                 as="textarea"
                 rows={4}
                 value={description}
