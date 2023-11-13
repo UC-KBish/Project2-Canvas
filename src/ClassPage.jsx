@@ -18,11 +18,11 @@ import './ClassPage.css'
 
 
 
-function ClassPage() {
+function ClassPage(props) {
   let navButtons = ["Syllabus", "Modules", "Assignments", "Grades", "Zoom"]
-  let navContent = [<ClassContentModule/>, <Modules/>, <Assignments/>, <Grades/>, <Zoom/>]
+  let navContent = [<ClassContentModule ClassID={props.ClassID} />, <Modules ClassID={props.ClassID} />, <Assignments ClassID={props.ClassID} />, <Grades ClassID={props.ClassID} />, <Zoom ClassID={props.ClassID} />]
 
-  const [centerContent, setContent] = useState(<ClassContentModule/>);
+  const [centerContent, setContent] = useState(navContent[0]);
   const [centerContent2, setContent2] = useState(null);
 
   function navFunction(index) {
@@ -39,9 +39,9 @@ function ClassPage() {
   return (
     <div id='main'>
       <div id='Left-Column'>
-        <ClassNavigationBar navFunction={navFunction} navButtons={navButtons}/>
-        <ClassAnnouncementsModule/>
-        
+        <ClassNavigationBar navFunction={navFunction} navButtons={navButtons} />
+        <ClassAnnouncementsModule />
+
       </div>
       <div id='Center-Column'>
         <div className='ClassContentModuleContainer'>
@@ -49,11 +49,11 @@ function ClassPage() {
         </div>
       </div>
       <div id='Right-Column'>
-      <ClassSemesterProgressModule/>
-      <ClassStatsModule/>
-      <div className='ToDoModule Container'>
-      <TodoList classPage="class1" />
-      </div>
+        <ClassSemesterProgressModule />
+        <ClassStatsModule />
+        <div className='ToDoModule Container'>
+          <TodoList classPage="class1" />
+        </div>
       </div>
     </div>
   )

@@ -4,9 +4,9 @@ import ModuleListItem from './ModuleListItem'
 
 import classData from '../../data.json'
 
-export default function Modules() {
+export default function Modules(props) {
     const [sourceList, setSourceList] = useState([]);
-    let destinationLists = classData['Modules']
+    let destinationLists = classData[props.ClassID]['Modules']
 
     const handleDragStart = (e, item) => {
         e.dataTransfer.setData('text/plain', item);
@@ -40,11 +40,11 @@ export default function Modules() {
     };
 
 
-    return (<>
-        <div>
+    return (
+        <div className='ClassPage-Container'>
             <h1>Modules</h1>
             <div className="grid-container">
-                <div className="grid-item" onDragOver={(e) => handleDragOver(e)} onDrop={(e) => handleDropSource(e)}>
+                <div onDragOver={(e) => handleDragOver(e)} onDrop={(e) => handleDropSource(e)}>
                     <ModuleListItem key={0} value={0} content={<>
                         <h2>My Favorites</h2>
                         <ul className='draggableList'>
@@ -52,15 +52,19 @@ export default function Modules() {
                                 <li
                                     key={item}
                                 >
-                                    {item}
-                                    {index > 0 ?
-                                        <button onClick={() => moveInSource(index, -1)}>Move Up</button> : <></>
-                                    }
+                                    <div className='favoriteModule'>
+                                        {item}
+                                        <div>
+                                            {index > 0 ?
+                                                <button onClick={() => moveInSource(index, -1)}><i className="bi bi-chevron-up" /></button> : <></>
+                                            }
 
-                                    {index < sourceList.length - 1 ?
-                                        <button onClick={() => moveInSource(index, 1)}>Move Down</button> : <></>
-                                    }
-                                    <button onClick={() => moveInSource(index, 0)}>Remove</button>
+                                            {index < sourceList.length - 1 ?
+                                                <button onClick={() => moveInSource(index, 1)}><i className="bi bi-chevron-down" /></button> : <></>
+                                            }
+                                            <button onClick={() => moveInSource(index, 0)}><i className="bi bi-trash" /></button>
+                                        </div>
+                                    </div>
                                 </li>
                             ))}
                         </ul>
@@ -76,6 +80,8 @@ export default function Modules() {
                                     draggable
                                     onDragStart={(e) => handleDragStart(e, item)}
                                 >
+                                    <i className="bi bi-pencil" style={{fontSize: '1.5rem'}}></i>
+                                    <i className="bi bi-file-text" style={{fontSize: '1.5rem'}}></i>
                                     {item}
                                 </li>
                             ))}
@@ -83,30 +89,8 @@ export default function Modules() {
                     </>} />)
                 })}
             </div>
-            <button onClick={() => completedAssignment}>Woo</button>
+            {/* <button onClick={() => completedAssignment}>Woo</button> */}
             <button>Download All Files</button>
         </div>
-    </>)
+    )
 }
-
-// {[0, 1, 3, 4, 5, 6, 4, 4, 4, 4, 3].map((value, index) => (
-//     <ModuleListItem key={index} value={index} content={<>
-//         <h2>Module {index} - Getting Started</h2>
-//         <p>Prez 1</p>
-//         <p>Prez 2</p>
-//         <p>Prez 3</p>
-//         {index == 1 ? <>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//             <p>Prez 3</p>
-//         </> :
-//             <></>}
-//     </>} />
-// ))}

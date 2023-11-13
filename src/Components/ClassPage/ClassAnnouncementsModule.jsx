@@ -11,7 +11,7 @@ function ClassAnnouncementsModule() {
     };
 
     return (
-        <div className="ClassAnnouncementsModule-Container Container">
+        <div className="ClassAnnouncementsModule-Container ClassPage-Container">
             <h3>Announcements</h3>
             {announcementList.slice(0, 3).map((announcement, index) => {
                 const classname = index === 0 ? "recent-announcement" : "older-announcement";

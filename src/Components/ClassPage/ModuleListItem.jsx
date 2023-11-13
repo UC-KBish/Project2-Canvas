@@ -18,7 +18,7 @@ export default function ModuleListItem(props) {
     }, [content]);
 
     return (
-        <div className="grid-item" style={{ gridRow: `span ${rowsToSpan}` }}>
+        <div className="ClassPage-ContainerItem" style={{ gridRow: `span ${rowsToSpan}` }}>
             <div id="content" ref={contentRef} style={{ whiteSpace: 'nowrap' }}>
                 {content}
             </div>

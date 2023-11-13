@@ -38,35 +38,27 @@ const cardStyle = {
 
 function CardGrids(props) {
   return (
-    <button onClick={props.setterFunc} style={{
-      background: 'none',
-      border: 'none',
-      padding: 0,
-      margin: 0,
-      cursor: 'pointer',
-      color: 'inherit',
-      font: 'inherit',
-      width: '100%',
-      textAlign: 'inherit',
-    }}>
+    <div
+      style={{
+        display: 'flex',
+        direction: 'column',
+        flexWrap: 'wrap'
+      }}>
 
-      <div
-        style={{
-          display: 'flex',
-          direction: 'column',
-          flexWrap: 'wrap'
-        }}>
+      {class_info.map((this_class, index) => {
+        return (
+          <button onClick={() => props.setterFunc(index)} className="hidden-button">
 
-        {class_info.map((this_class, index) => {
-            return <Card style={cardStyle}>
+            <Card style={cardStyle}>
               <h2>{this_class.class_name}</h2>
               <p>{this_class.class_number}</p>
               <p>{this_class.class_professor}</p>
             </Card>
-        })}
+          </button>
+        )
+      })}
 
-      </div>
-    </button>
+    </div>
   );
 }
 

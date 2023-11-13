@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import Assignment1 from './Assignments/Assignment1';
+import AssignmentReturn from './BulkJSX/AssignmentReturn';
 
 import classData from '../../data.json'
 
@@ -10,25 +10,20 @@ function ContentPreview(props) {
     return (
         <>
             <div className={show == 1 ? "non-hidden-element" : "hidden-element"} style={{ display: 'block' }}>
-                <h2>Assignment 2 description</h2>
-                <p>Submit:</p>
-                <ol>
-                    <li>User profiles</li>
-                </ol>
+                <AssignmentReturn id='0' dropSubmit='true'/>
             </div>
 
             <div className={show == 2 ? "non-hidden-element" : "hidden-element"} style={{ display: 'block' }}>
-                <h2>Submit</h2>
-                <button>Submit Here</button>
+                <AssignmentReturn id='submit'/>
             </div>
         </>)
 }
 
-function Assignments() {
+export default function Assignments(props) {
 
-    const assignments = classData['Assignments']
+    const assignments = classData[props.ClassID]['Assignments']
 
-    let assignmentPages = [<Assignment1 />]
+    let assignmentPages = [<AssignmentReturn id='0'/>]
     let assignmentsState = []
 
     assignments.forEach(() => {
@@ -56,49 +51,50 @@ function Assignments() {
     }
 
     return (<>
-        <div>
+        <div className='ClassPage-Container'>
             <h1>Assignments</h1>
 
             {AssignmentPageState == null ?
                 <div>
-                    <div className="AssignmentModule Container">
-                        <h2>Up Next</h2>
-                        {assignments.map((assignment, index) => {
-                            return (<>
-                                <div className={!assignment.completed ? 'non-hidden-element' : 'hidden-element'}>
-                                    <button onClick={() => setAssignmentPage(assignmentPages[0])}>
-                                        <p>{assignment.name}</p>
-                                        <p>{assignment.due}</p>
+                    <h2>Up Next</h2>
+                    {assignments.map((assignment, index) => {
+                        return (
+                            <div className={'ClassPage-ContainerItem ' + (!assignment.completed ? 'non-hidden-element' : 'hidden-element')} style={{ display: 'block' }}>
+                                <div style={{display: 'flex'}}>
+                                    <button onClick={() => setAssignmentPage(<AssignmentReturn id={assignment.id}/>)} className='hidden-button'>
                                         <div>
-                                            <button onClick={() => updateState(index, 1)}>Preview</button>
-                                            <button onClick={() => updateState(index, 2)}>Submit</button>
+                                            <p className='ItemText'>{assignment.name}</p>
+                                            <p className='ItemSubtext'>{assignment.due}</p>
                                         </div>
                                     </button>
+
+                                    <button onClick={() => updateState(index, 1)}>Preview</button>
+                                    <button onClick={() => updateState(index, 2)}>Submit</button>
                                 </div>
                                 <ContentPreview show={state[index]} parentShow={!assignment.completed} />
-                            </>)
-                        })}
-                    </div>
-                    <div className="AssignmentModule Container">
-                        <h2>Submitted</h2>
-                        {assignments.map((assignment, index) => {
-                            return (<>
-                                <div className={assignment.completed ? 'non-hidden-element' : 'hidden-element'}>
-                                    <p>{assignment.name}</p>
-                                    <div>
-                                        <button onClick={() => updateState(index, 1)}>Preview</button>
-                                        <button onClick={() => updateState(index, 2)}>Submit</button>
-                                    </div>
+                            </div>
+                        )
+                    })}
+                    <h2>Submitted</h2>
+                    {assignments.map((assignment, index) => {
+                        return (
+                            <div className={'ClassPage-ContainerItem ' + (assignment.completed ? 'non-hidden-element' : 'hidden-element')} style={{ display: 'block' }}>
+                                <div style={{display: 'flex'}}>
+                                    <button onClick={() => setAssignmentPage(assignmentPages[0])} className='hidden-button'>
+                                        <div>
+                                            <p className='ItemText'>{assignment.name}</p>
+                                            <p className='ItemSubtext'>{assignment.due}</p>
+                                        </div>
+                                    </button>
 
+                                    <button onClick={() => updateState(index, 1)}>Preview</button>
                                 </div>
                                 <ContentPreview show={state[index]} parentShow={assignment.completed} />
-                            </>)
-                        })}
-                    </div>
+                            </div>
+                        )
+                    })}
                 </div>
                 : AssignmentPageState}
         </div>
     </>)
 }
-
-export default Assignments

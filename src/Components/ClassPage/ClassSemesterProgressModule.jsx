@@ -49,7 +49,7 @@ function ClassSemesterProgressModule() {
     const weeksLeft = 17 - currentWeek
     
     return (
-        <div className="ClassSemesterProgressModule-Container Container">
+        <div className="ClassSemesterProgressModule-Container ClassPage-Container">
             <h2>{weeksLeft} Week{weeksLeft == 1 ? "" : "s"} Left!</h2>
             <p>{messages[Math.floor(map(weeksLeft, 16, 1, 0, 19))]}</p>
         </div>

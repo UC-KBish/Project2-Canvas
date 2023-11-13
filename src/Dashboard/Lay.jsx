@@ -23,8 +23,8 @@ const Lay = () => {
                       <AnnouncementsPage/>,
                       <WipPage title ={'Groups'}/>]
 
-  function setterFunc() {
-    setContent(<ClassPage/>)    
+  function setterFunc(ClassID) {
+    setContent(<ClassPage ClassID={ClassID}/>)    
   }
 
   function navFunction(index) {

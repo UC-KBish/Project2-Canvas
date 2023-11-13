@@ -9,11 +9,56 @@
 }
 
 /* All */
-.Container {
-    background-color: #e0e0e0;
+.ClassPage-Container {
     margin: 0;
     padding: 1rem;
 }
+
+.ClassPage-ContainerItem {
+    display: flex;
+    justify-content: space-between;
+    background-color: #e0e0e0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.hidden-button {
+    /* Reset margin and padding */
+    margin: 0;
+    padding: 0;
+  
+    /* Reset border */
+    border: none;
+  
+    /* Reset background and text color */
+    background-color: transparent;
+    color: inherit;
+  
+    /* Reset font styles */
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    text-decoration: none;
+  
+    /* Reset cursor style */
+    cursor: pointer;
+  
+    /* Remove any other specific styles */
+    /* For example, remove box-shadow, outline, etc. */
+    box-shadow: none;
+    outline: none;
+  
+    /* Override any other styles as needed */
+    display: inherit;
+    justify-content: inherit;
+    text-align: inherit;
+
+    width: 100%;
+    height: 100%;
+  }
 
 /* Left Side */
 #Left-Column {
@@ -56,13 +101,13 @@
     margin: 1rem;
 }
 
-.ClassAnnouncementsModule-Container>p{
+.ClassAnnouncementsModule-Container>p {
     margin-block: 0;
     padding-block: 0.5rem;
     padding-inline: 1rem;
 }
 
-.ClassAnnouncementsModule-Container>.Cat-0{
+.ClassAnnouncementsModule-Container>.Cat-0 {
     background-color: #c0c0c0;
 }
 
@@ -78,8 +123,10 @@
 }
 
 .ClassContentModuleContainer {
-    width: 100%; /* Match the width of the parent div */
-    height: 100%; /* Match the height of the parent div */
+    width: 100%;
+    /* Match the width of the parent div */
+    height: 100%;
+    /* Match the height of the parent div */
     padding: 0;
 }
 
@@ -99,7 +146,8 @@
 .ToDoModule {
     border-left: 2px solid black;
     border-bottom: 2px solid black;
-    max-height: 700px; /*set max height so it doesn't take up too much space? */
+    max-height: 700px;
+    /*set max height so it doesn't take up too much space? */
     flex: 1;
 }
 
@@ -108,58 +156,68 @@
     border-bottom: 2px solid black;
 }
 
-
 /* Modules */
-.module {
-    background-color: #e0e0e0;
-    border-radius: 1rem;
-    padding-top: 0.25rem;
-    
-}
-
-.module > h2{
-    /* background-color: #c0c0c0; */
-    margin: 0;
-}
-
-/* Assignments */
-.AssignmentModule > div {
-    display: flex;
-    justify-content: space-between;
-}
-
-.AssignmentModule > p {
-    flex: 1;
-}
-
-.hidden-element {
-    display: none !important;
-  }
-
-
-  .grid-container {
+.ClassModules-Container>div {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(22vw, 1fr));
     gap: 10px;
     grid-auto-rows: minmax(10vw, auto);
-  }
 
-  .grid-item {
-    background-color: #3498db;
-    color: white;
+}
+
+.grid-item {
+    background-color: #e0e0e0;
     padding: 10px;
     text-align: center;
-    font-size: 18px;
-  }
+    border-radius: 0.5rem;
+    text-align: left;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
 
-  .draggableList {
+}
+
+.draggableList {
     list-style-type: none;
     /* Remove default padding and margin */
     padding: 0;
     margin: 0;
-  }
+}
 
-.ClassZoom-Container > img {
+
+/* Assignments */
+/* .ClassAssignment-ContainerItem {
+    display: flex;
+} */
+
+.hidden-element {
+    display: none !important;
+}
+
+
+/* Grades */
+.ClassGrade-Container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #c0c0c0;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    align-items: center;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.ItemText {
+    margin-bottom: 0;
+}
+
+.ItemSubtext {
+    margin-top: 0;
+    font-size: smaller;
+    color: #202020;
+}
+
+
+/* Zoom */
+.ClassZoom-Container>img {
     margin-top: 2rem;
 }
 
@@ -169,7 +227,8 @@
     width: 100%;
 }
 
-td, tr {
+td,
+tr {
     padding: 8px;
     text-align: left;
     border-bottom: solid;
@@ -190,22 +249,9 @@ td, tr {
     align-items: center;
 }
 
-.ClassGrade-Container {
+
+
+.favoriteModule {
     display: flex;
     justify-content: space-between;
-    background-color: #c0c0c0;
-    margin-bottom: 1rem;
-    padding: 0.5rem;
-    border-radius: 0.5rem;
-    align-items: center;
-}
-
-.ClassGrade-Container .grade-name {
-    margin-bottom: 0;
-}
-
-.ClassGrade-Container .grade-type {
-    margin-top: 0;
-    font-size: smaller;
-    color: #202020;
 }
