@@ -26,8 +26,9 @@ const ProgressBar = () => {
 
   const progressBarStyle = {
     width: '75%',
-    height: '3%',
+    height: '4%',
     backgroundColor: 'white',
+    marginLeft: '2%',
     border: '1px solid grey',
     color: 'black',
     borderRadius: '15px',
@@ -37,11 +38,14 @@ const ProgressBar = () => {
   const filledBarStyle = {
     width: `${(currentWeek / 17) * 100}%`,
     height: '100%',
-    backgroundColor: '#7393B3',
+    backgroundColor: '#29CC8E',
+    backgroundImage: 'linear-gradient(#29CC8E, #3D9976)',
     borderRadius: '15px',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    fontSize: '16px',
+    fontWeight: 'bold'
   };
 
   return (

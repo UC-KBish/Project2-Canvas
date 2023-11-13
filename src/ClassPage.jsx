@@ -52,7 +52,7 @@ function ClassPage() {
       <ClassSemesterProgressModule/>
       <ClassStatsModule/>
       <div className='ToDoModule Container'>
-      <TodoList/>
+      <TodoList classPage="class1" />
       </div>
       </div>
     </div>

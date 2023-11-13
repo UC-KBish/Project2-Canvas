@@ -19,7 +19,7 @@ function Dashboard(props) {
         >
           <Content>
             <div>
-              <h1>Dashboard</h1>
+              <h1 style={{marginLeft: '2%'}}>Dashboard</h1>
             </div>
 
             <ProgressBar /><CardGrids setterFunc={props.setterFunc}/>
@@ -33,7 +33,7 @@ function Dashboard(props) {
               width: '20%',
               height: '100vh'
             }}>
-            <TodoList/>
+            <TodoList classPage="global" />
           </Sider>
 
         </Layout>

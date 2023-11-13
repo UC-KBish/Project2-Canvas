@@ -9,6 +9,12 @@
   overflow-y: auto;  /* Add a vertical scrollbar if necessary */
 }
 
+.listonlycontainerdone {
+  max-height: 150px;
+  margin-top: 0px;
+  overflow-y: auto;  /* Add a vertical scrollbar if necessary */
+}
+
 .modal {
   display: none;
   position: fixed;
@@ -25,14 +31,17 @@
 .modal-content {
   background-color: #fff;
   border-radius: 10px;
-  border: 1px solid #ccc; /* You can adjust the color as needed */
+  border: 1px solid #ccc; 
 }
 .modal-title {
-  font-size: 1.5rem; /* Adjust the font size as per your preference */
+  font-size: 1.5rem; 
   padding-left: .2rem;
 }
+
 .modal-body *:not(.close) {
-  padding: 0.1rem;
+  padding-left: 0.1rem;
+  padding-right: 0.15rem;
+  padding-bottom: 0.1rem;
 }
 
 .modal-header .close {
@@ -42,12 +51,13 @@
 }
 
 .close {
-
   display: flex;
   align-items: center;
   justify-items: center;
   color: #000;
   cursor: pointer;
+  padding-right: 0.1rem;
+  margin-right: 0.1rem;
 
 }
 
@@ -78,11 +88,19 @@
   font-size: 0.7em; /*Adjust the font size as needed */
 }
 
-.description {
-  /*find way to align this to top of div later*/
-}
-
 .buttonlabelcontainer {
   margin-bottom: 0px;
 }
 
+.form-label {
+  margin-right: 10px;
+
+  justify-content: start;
+}
+
+.descriptionBox {
+  display: flex;
+  align-content: flex-end;
+  margin-left: 10px;
+  overflow-y: auto;  /* Add a vertical scrollbar if necessary */
+}
