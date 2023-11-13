@@ -23,16 +23,18 @@ function ClassPage(props) {
   let navContent = [<ClassContentModule ClassID={props.ClassID} />, <Modules ClassID={props.ClassID} />, <Assignments ClassID={props.ClassID} />, <Grades ClassID={props.ClassID} />, <Zoom ClassID={props.ClassID} />]
 
   const [centerContent, setContent] = useState(navContent[0]);
+  const [centerContentID, setContentID] = useState(0);
 
   function navFunction(index) {
     setContent(navContent[index])
+    setContentID(index)
   }
 
 
   return (
     <div id='main'>
       <div id='Left-Column'>
-        <ClassNavigationBar navFunction={navFunction} navButtons={navButtons} />
+        <ClassNavigationBar navFunction={navFunction} navButtons={navButtons} centerContentID={centerContentID} />
         <ClassAnnouncementsModule />
 
       </div>
