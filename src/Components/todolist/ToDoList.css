@@ -9,6 +9,12 @@
   overflow-y: auto;  /* Add a vertical scrollbar if necessary */
 }
 
+.listonlycontainerdone {
+  max-height: 150px;
+  margin-top: 0px;
+  overflow-y: auto;  /* Add a vertical scrollbar if necessary */
+}
+
 .modal {
   display: none;
   position: fixed;

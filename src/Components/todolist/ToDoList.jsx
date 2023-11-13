@@ -312,7 +312,7 @@ const TodoList = ({ classPage }) => {
         <h2>Done:</h2>
       </div>
    
-      <div className="listonlycontainer">
+      <div className="listonlycontainerdone">
           <ListGroup>
               {completedTasks.map((item) => {
                 const now = new Date();
@@ -343,7 +343,7 @@ const TodoList = ({ classPage }) => {
                       <span className="task-name">{item.name}</span>
                       <br />
                       <span className="due-date">
-                        {`Due: ${formattedDueDate} (in ${relativeTime})`}
+                        Done! Great work!
                       </span>
                     </div>
                   </ListGroup.Item>
