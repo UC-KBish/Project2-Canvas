@@ -10,6 +10,9 @@ const TodoList = ({ classPage }) => {
   const [dueDate, setDueDate] = useState('');
   const [priority, setPriority] = useState('low');
   const [description, setDescription] = useState('');
+  const [maxHeightTodoList, setMaxHeightTodoList] = useState(475); // Default max height for 'global'
+  const [maxHeightListOnlyContainer, setMaxHeightListOnlyContainer] = useState(180);
+  const [maxHeightListOnlyContainerDone, setMaxHeightListOnlyContainerDone] = useState(150);
   const [completedTasks, setCompletedTasks] = useState([
     { id: 22, name: 'Completed Task 1 (UI Design)', priority: 'low', dueDate: '2023-11-01T00:00:00', description: 'Description for Completed Task 1', classPageTasks: 'class1' },
     { id: 23, name: 'Completed Task 2 (UI Design)', priority: 'normal', dueDate: '2023-11-02T00:00:00', description: 'Description for Completed Task 2', classPageTasks: 'class1' },
@@ -127,6 +130,16 @@ const TodoList = ({ classPage }) => {
     let filteredLowPriority = [];
     let filteredCompletedTasks = [];
 
+    if (classPage === 'class1' || classPage === 'class2' || classPage === 'class3') {
+      setMaxHeightTodoList(400); 
+      setMaxHeightListOnlyContainer(190); 
+      setMaxHeightListOnlyContainerDone(80); 
+    } else {
+      setMaxHeightTodoList(700); // Default max height for 'global'
+      setMaxHeightListOnlyContainer(350); // Default max height for 'listonlycontainer'
+      setMaxHeightListOnlyContainerDone(200); // Default max height for 'listonlycontainerdone'
+    }
+
     switch (classPage) {
       case 'class1':
         filteredHighPriority = highPriority.filter(task => task.classPageTasks === 'class1' || task.classPageTasks === 'global');
@@ -167,7 +180,7 @@ const TodoList = ({ classPage }) => {
   }, [classPage]); // Only include classPage as a dependency
 
   return (
-    <div className="todo-list-container">
+    <div className="todo-list-container" style={{ maxHeight: maxHeightTodoList }}>
       <div className='buttonlabelcontainer'>
         <Row style={{display:"flex", justifyContent: 'space-between'}}>
           <Col xs={6} style={{ display:'flex', alignItems: 'center', justifyItems: 'flex-start'}}>
@@ -180,7 +193,7 @@ const TodoList = ({ classPage }) => {
           </Col>
         </Row>
       </div>
-      <div className="listonlycontainer">
+      <div className="listonlycontainer" style={{ maxHeight: maxHeightListOnlyContainer }}>
         {highPriority.length > 0 && (
           <div>
             <h4 className="priority-label">High Priority</h4>
@@ -312,7 +325,7 @@ const TodoList = ({ classPage }) => {
         <h2>Done:</h2>
       </div>
    
-      <div className="listonlycontainerdone">
+      <div className="listonlycontainerdone" style={{ maxHeight: maxHeightListOnlyContainerDone }}>
           <ListGroup>
               {completedTasks.map((item) => {
                 const now = new Date();
