@@ -10,7 +10,7 @@ function ContentPreview(props) {
     return (
         <>
             <div className={show == 1 ? "non-hidden-element" : "hidden-element"} style={{ display: 'block' }}>
-                <AssignmentReturn id='0' dropSubmit='true'/>
+                <AssignmentReturn id={props.id} dropSubmit='true'/>
             </div>
 
             <div className={show == 2 ? "non-hidden-element" : "hidden-element"} style={{ display: 'block' }}>
@@ -23,7 +23,6 @@ export default function Assignments(props) {
 
     const assignments = classData[props.ClassID]['Assignments']
 
-    let assignmentPages = [<AssignmentReturn id='0'/>]
     let assignmentsState = []
 
     assignments.forEach(() => {
@@ -71,7 +70,7 @@ export default function Assignments(props) {
                                     <button onClick={() => updateState(index, 1)}>Preview</button>
                                     <button onClick={() => updateState(index, 2)}>Submit</button>
                                 </div>
-                                <ContentPreview show={state[index]} parentShow={!assignment.completed} />
+                                <ContentPreview show={state[index]} parentShow={!assignment.completed} id={assignment.id}/>
                             </div>
                         )
                     })}
@@ -80,7 +79,7 @@ export default function Assignments(props) {
                         return (
                             <div className={'ClassPage-ContainerItem ' + (assignment.completed ? 'non-hidden-element' : 'hidden-element')} style={{ display: 'block' }}>
                                 <div style={{display: 'flex'}}>
-                                    <button onClick={() => setAssignmentPage(assignmentPages[0])} className='hidden-button'>
+                                    <button onClick={() => setAssignmentPage(<AssignmentReturn id={assignment.id}/>)} className='hidden-button'>
                                         <div>
                                             <p className='ItemText'>{assignment.name}</p>
                                             <p className='ItemSubtext'>{assignment.due}</p>
@@ -89,12 +88,19 @@ export default function Assignments(props) {
 
                                     <button onClick={() => updateState(index, 1)}>Preview</button>
                                 </div>
-                                <ContentPreview show={state[index]} parentShow={assignment.completed} />
+                                <ContentPreview show={state[index]} parentShow={assignment.completed} id={assignment.id}/>
                             </div>
                         )
                     })}
                 </div>
-                : AssignmentPageState}
+                : <>
+                <button onClick={() => setAssignmentPage(null)} className='hidden-button' style={{display: 'flex'}}>
+
+                <i className="bi bi-arrow-left">Back</i>
+
+                </button>
+                {AssignmentPageState}
+                </>}
         </div>
     </>)
 }
