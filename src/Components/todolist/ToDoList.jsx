@@ -50,7 +50,7 @@ const TodoList = ({ classPage }) => {
     { id: 15, name: 'Computer Graphics Task 5', priority: 'low', dueDate: '2023-11-25T00:00:00', description: 'Description for Computer Graphics Task 5', classPageTasks: 'class3' },
     { id: 16, name: 'UI Design Assignment 6', priority: 'low', dueDate: '2023-11-30T00:00:00', description: 'Description for UI Design Assignment 6', classPageTasks: 'class1' },
     { id: 17, name: 'Senior Design Project 6', priority: 'low', dueDate: '2023-11-28T00:00:00', description: 'Description for Senior Design Project 6', classPageTasks: 'class2' },
-    { id: 18, name: 'Global Task 4', priority: 'low', dueDate: '2023-11-10T00:00:00', description: 'Description for Global Task 4', classPageTasks: 'global' },
+    { id: 18, name: 'Global Task 4', priority: 'low', dueDate: '2023-11-30T00:00:00', description: 'Description for Global Task 4', classPageTasks: 'global' },
     { id: 19, name: 'UI Design Assignment 7', priority: 'low', dueDate: '2023-11-22T00:00:00', description: 'Description for UI Design Assignment 7', classPageTasks: 'class1' },
     { id: 20, name: 'Senior Design Project 7', priority: 'low', dueDate: '2023-11-18T00:00:00', description: 'Description for Senior Design Project 7', classPageTasks: 'class2' },
     { id: 21, name: 'Computer Graphics Task 7', priority: 'low', dueDate: '2023-11-15T00:00:00', description: 'Description for Computer Graphics Task 7', classPageTasks: 'class3' },
