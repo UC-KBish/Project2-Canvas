@@ -19,7 +19,7 @@ function Dashboard(props) {
         >
           <Content>
             <div>
-              <h1>Dashboard</h1>
+              <h1 style={{marginLeft: '2%'}}>Dashboard</h1>
             </div>
 
             <ProgressBar /><CardGrids setterFunc={props.setterFunc}/>
