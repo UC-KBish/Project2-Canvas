@@ -37,11 +37,11 @@ const TodoList = ({ classPage }) => {
   ]);
   
   const [normalPriority, setNormalPriority] = useState([
-    { id: 8, name: 'Global Task 2', priority: 'normal', dueDate: '2023-11-07T00:00:00', description: 'Description for Global Task 2', classPageTasks: 'global' },
-    { id: 9, name: 'Computer Graphics Task 3', priority: 'normal', dueDate: '2023-11-10T00:00:00', description: 'Description for Computer Graphics Task 3', classPageTasks: 'class3' },
+    { id: 8, name: 'Global Task 2', priority: 'normal', dueDate: '2023-11-20T00:00:00', description: 'Description for Global Task 2', classPageTasks: 'global' },
+    { id: 9, name: 'Computer Graphics Task 3', priority: 'normal', dueDate: '2023-11-21T00:00:00', description: 'Description for Computer Graphics Task 3', classPageTasks: 'class3' },
     { id: 10, name: 'UI Design Assignment 4', priority: 'normal', dueDate: '2023-11-22T00:00:00', description: 'Description for UI Design Assignment 4', classPageTasks: 'class1' },
     { id: 11, name: 'Senior Design Project 4', priority: 'normal', dueDate: '2023-11-28T00:00:00', description: 'Description for Senior Design Project 4', classPageTasks: 'class2' },
-    { id: 12, name: 'Global Task 3', priority: 'normal', dueDate: '2023-11-15T00:00:00', description: 'Description for Global Task 3', classPageTasks: 'global' },
+    { id: 12, name: 'Global Task 3', priority: 'normal', dueDate: '2023-11-25T00:00:00', description: 'Description for Global Task 3', classPageTasks: 'global' },
     { id: 13, name: 'UI Design Assignment 5', priority: 'normal', dueDate: '2023-11-18T00:00:00', description: 'Description for UI Design Assignment 5', classPageTasks: 'class1' },
     { id: 14, name: 'Senior Design Project 5', priority: 'normal', dueDate: '2023-11-20T00:00:00', description: 'Description for Senior Design Project 5', classPageTasks: 'class2' },
   ]);
