@@ -10,11 +10,11 @@ function ContentPreview(props) {
     return (
         <>
             <div className={show == 1 ? "non-hidden-element" : "hidden-element"} style={{ display: 'block' }}>
-                <AssignmentReturn id={props.id} dropSubmit='true'/>
+                <AssignmentReturn id={props.id} dropSubmit='true' incrementStat={props.incrementStat} />
             </div>
 
             <div className={show == 2 ? "non-hidden-element" : "hidden-element"} style={{ display: 'block' }}>
-                <AssignmentReturn id='submit'/>
+                <AssignmentReturn id='submit' incrementStat={props.incrementStat} />
             </div>
         </>)
 }
@@ -59,8 +59,8 @@ export default function Assignments(props) {
                     {assignments.map((assignment, index) => {
                         return (
                             <div className={'ClassPage-ContainerItem ' + (!assignment.completed ? 'non-hidden-element' : 'hidden-element')} style={{ display: 'block' }}>
-                                <div style={{display: 'flex'}}>
-                                    <button onClick={() => setAssignmentPage(<AssignmentReturn id={assignment.id}/>)} className='hidden-button'>
+                                <div style={{ display: 'flex' }}>
+                                    <button onClick={() => setAssignmentPage(<AssignmentReturn id={assignment.id} incrementStat={props.incrementStat} />)} className='hidden-button'>
                                         <div>
                                             <p className='ItemText'>{assignment.name}</p>
                                             <p className='ItemSubtext'>{assignment.due}</p>
@@ -70,7 +70,7 @@ export default function Assignments(props) {
                                     <button onClick={() => updateState(index, 1)}>Preview</button>
                                     <button onClick={() => updateState(index, 2)}>Submit</button>
                                 </div>
-                                <ContentPreview show={state[index]} parentShow={!assignment.completed} id={assignment.id}/>
+                                <ContentPreview show={state[index]} parentShow={!assignment.completed} id={assignment.id} incrementStat={props.incrementStat} />
                             </div>
                         )
                     })}
@@ -78,8 +78,8 @@ export default function Assignments(props) {
                     {assignments.map((assignment, index) => {
                         return (
                             <div className={'ClassPage-ContainerItem ' + (assignment.completed ? 'non-hidden-element' : 'hidden-element')} style={{ display: 'block' }}>
-                                <div style={{display: 'flex'}}>
-                                    <button onClick={() => setAssignmentPage(<AssignmentReturn id={assignment.id}/>)} className='hidden-button'>
+                                <div style={{ display: 'flex' }}>
+                                    <button onClick={() => setAssignmentPage(<AssignmentReturn id={assignment.id} incrementStat={props.incrementStat} />)} className='hidden-button'>
                                         <div>
                                             <p className='ItemText'>{assignment.name}</p>
                                             <p className='ItemSubtext'>{assignment.due}</p>
@@ -88,18 +88,18 @@ export default function Assignments(props) {
 
                                     <button onClick={() => updateState(index, 1)}>Preview</button>
                                 </div>
-                                <ContentPreview show={state[index]} parentShow={assignment.completed} id={assignment.id}/>
+                                <ContentPreview show={state[index]} parentShow={assignment.completed} id={assignment.id} incrementStat={props.incrementStat} />
                             </div>
                         )
                     })}
                 </div>
                 : <>
-                <button onClick={() => setAssignmentPage(null)} className='hidden-button' style={{display: 'flex'}}>
+                    <button onClick={() => setAssignmentPage(null)} className='hidden-button' style={{ display: 'flex' }}>
 
-                <i className="bi bi-arrow-left">Back</i>
+                        <i className="bi bi-arrow-left">Back</i>
 
-                </button>
-                {AssignmentPageState}
+                    </button>
+                    {AssignmentPageState}
                 </>}
         </div>
     </>)

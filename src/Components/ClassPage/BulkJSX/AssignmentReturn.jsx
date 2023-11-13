@@ -13,7 +13,7 @@ export default function AssignmentReturn(props) {
                 </div>
             </div>
         </div>
-        <button style={{ width: '100%', marginTop: '1rem' }}>
+        <button onClick={() => props.incrementStat(0)} style={{ width: '100%', marginTop: '1rem' }}>
             <h3>Submit Here</h3>
         </button>
     </>)
