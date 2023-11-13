@@ -1,6 +1,6 @@
 function Profile(props) {
     return (<>
-        <div style={{paddingLeft: '2.5%'}}>
+        <div style={{paddingLeft: '4%'}}>
             <div className="ProfileContent">
                 <div style={{display: 'flex', flexDirection: 'row', flexWrap: 'true'}}>
                     <div style={{display: 'flex', flexDirection: 'column'}}>
