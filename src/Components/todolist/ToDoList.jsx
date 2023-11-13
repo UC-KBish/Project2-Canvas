@@ -24,9 +24,9 @@ const TodoList = ({ classPage }) => {
   const [classPageTasks, setClassPageTasks] = useState([]);
 
   const [highPriority, setHighPriority] = useState([
-    { id: 1, name: 'UI Design Assignment 1', priority: 'high', dueDate: '2023-11-10T00:00:00', description: 'Description for UI Design Assignment 1', classPageTasks: 'class1' },
-    { id: 2, name: 'Senior Design Project 1', priority: 'high', dueDate: '2023-11-12T00:00:00', description: 'Description for Senior Design Project 1', classPageTasks: 'class2' },
-    { id: 3, name: 'Computer Graphics Task 1', priority: 'high', dueDate: '2023-11-05T00:00:00', description: 'Description for Computer Graphics Task 1', classPageTasks: 'class3' },
+    { id: 1, name: 'UI Design Assignment 1', priority: 'high', dueDate: '2023-11-20T00:00:00', description: 'Description for UI Design Assignment 1', classPageTasks: 'class1' },
+    { id: 2, name: 'Senior Design Project 1', priority: 'high', dueDate: '2023-11-17T00:00:00', description: 'Description for Senior Design Project 1', classPageTasks: 'class2' },
+    { id: 3, name: 'Computer Graphics Task 1', priority: 'high', dueDate: '2023-11-18T00:00:00', description: 'Description for Computer Graphics Task 1', classPageTasks: 'class3' },
     { id: 4, name: 'UI Design Assignment 2', priority: 'high', dueDate: '2023-11-15T00:00:00', description: 'Description for UI Design Assignment 2', classPageTasks: 'class1' },
     { id: 5, name: 'Senior Design Project 2', priority: 'high', dueDate: '2023-11-25T00:00:00', description: 'Description for Senior Design Project 2', classPageTasks: 'class2' },
     { id: 6, name: 'Computer Graphics Task 2', priority: 'high', dueDate: '2023-11-30T00:00:00', description: 'Description for Computer Graphics Task 2', classPageTasks: 'class3' },
@@ -365,8 +365,8 @@ const TodoList = ({ classPage }) => {
         <Modal.Header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #ccc'  }}>
           <Modal.Title>{selectedTask ? 'Edit Task' : 'Add Task'}</Modal.Title>
           <div className="closebuttondiv">
-            <Button variant="outline-secondary" className="close" style={{ verticalAlign: 'middle' }} onClick={handleClose}>
-              <span aria-hidden="true">&times;</span>
+            <Button variant="outline-secondary" className="close" onClick={handleClose}>
+              <span aria-hidden="true" style={{display: 'flex', alignContent: 'center', justifyContent:'center'}}>&times;</span>
             </Button>
           </div>
         </Modal.Header>
@@ -422,11 +422,11 @@ const TodoList = ({ classPage }) => {
                 {classPage === 'class3' && <option value="class3">Computer Graphics</option>}
               </Form.Control>
             </Form.Group>
-            <Form.Group controlId="formDescription">
+            <Form.Group controlId="formDescription" style={{alignItems: 'flex-start', display: 'flex', paddingTop: '6px'}}>
               <Form.Label className="description">Description:</Form.Label>
-              <Form.Control
+              <Form.Control classname="descriptionBox"
                 as="textarea"
-                rows={3}
+                rows={4}
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
               />
