@@ -4,10 +4,10 @@ export default function SyllabusReturn(props) {
     console.log(props.ClassID)
 
     switch (props.ClassID) {
-        // Computer Graphics
+        // User Interface Design
         case 0:
             syllabusContent = (<>
-                <h2>Computer Graphics</h2>
+                <h2>User Interface Design</h2>
                 <p>Class times: Tuesday 12:00-3:00pm</p>
 
                 <p>Location: Baldwin 661</p>
@@ -94,10 +94,10 @@ export default function SyllabusReturn(props) {
             </>)
             break
 
-        // User Interface Design
+        // Computer Graphics
         case 2:
             syllabusContent = (<>
-                <h2>User Interface Design</h2>
+                <h2>Computer Graphics</h2>
                 <p>Class times: Tuesday 12:00-3:00pm</p>
 
                 <p>Location: Baldwin 661</p>
