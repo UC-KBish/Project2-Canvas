@@ -30,10 +30,14 @@ function Profile(props) {
                                                                display: 'flex', 
                                                                flexDirection: 'column', 
                                                                width: '30%'}}>
-                        <div style={{marginLeft: '5%'}}>
-                            <img src="/badgecs5001.png" style={{marginTop: '15%'}}></img>
-                            <img src="/badgecs5002.png" style={{}}></img>
-                            <img src="/badgecs5024.png" style={{height: '1%'}}></img>
+                        <div style={{marginLeft: '5%', height: '50%'}}>
+                            <img src="/badgecs5001.png" style={{height: '9%'}}></img>
+                            <img src="/badgecs5002.png" style={{height: '9%'}}></img>
+                            <img src="/badgecs5024.png" style={{height: '9%'}}></img>
+                            <img src="/badges5asearned.png" style={{height: '9%'}}></img>
+                            <img src="/badges20quizzestaken.png" style={{height: '9%'}}></img>
+                            <img src="/badges10assignmentssubmitted.png" style={{height: '9%'}}></img>
+                            
                         </div>
                     </div>
                 </div>
