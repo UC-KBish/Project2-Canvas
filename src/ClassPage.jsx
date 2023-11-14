@@ -19,7 +19,7 @@ import './ClassPage.css'
 
 function ClassPage(props) {
 
-  const [stats, setStats] = useState([12,5]);
+  const [stats, setStats] = useState([9,5]);
 
   const incrementStat = (index) => {
     setStats(prevStats => {

@@ -40,70 +40,22 @@
             }
         ],
         "Modules": [
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6"
-            ],
-            [
-                "Item 1",
-                "Item 2",
-                "Item 3"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ]
+            {
+                "title": "Getting Started in UI",
+                "items": [
+                    "Item 1",
+                    "Item 2",
+                    "Item 3"
+                ]
+            },
+            {
+                "title": "Now We're Getting Somewhere",
+                "items": [
+                    "Item 4",
+                    "Item 5",
+                    "Item 6"
+                ]
+            }
         ],
         "Zoom": [
             {
@@ -277,7 +229,7 @@
         }
     },
     {
-        "ClassName": "User Interface Design",
+        "ClassName": "Senior Design",
         "Assignments": [
             {
                 "name": "Assignment 1",
@@ -317,70 +269,22 @@
             }
         ],
         "Modules": [
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6"
-            ],
-            [
-                "Item 1",
-                "Item 2",
-                "Item 3"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ]
+            {
+                "title": "Getting Started in Senior Design",
+                "items": [
+                    "Item 1",
+                    "Item 2",
+                    "Item 3"
+                ]
+            },
+            {
+                "title": "Now We're Getting Somewhere",
+                "items": [
+                    "Item 4",
+                    "Item 5",
+                    "Item 6"
+                ]
+            }
         ],
         "Zoom": [
             {
@@ -554,7 +458,7 @@
         }
     },
     {
-        "ClassName": "User Interface Design",
+        "ClassName": "Computer Graphics",
         "Assignments": [
             {
                 "name": "Assignment 1",
@@ -594,70 +498,23 @@
             }
         ],
         "Modules": [
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6",
-                "Item 4",
-                "Item 5",
-                "Item 6"
-            ],
-            [
-                "Item 1",
-                "Item 2",
-                "Item 3"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ],
-            [
-                "Item 9",
-                "Item 8",
-                "Item 7"
-            ]
+            {
+                "title": "Getting Started in Computer Graphics",
+                "items": [
+                    {
+                        "title": "Item 1",
+                        "type": "Page"
+                    },
+                    {
+                        "title": "Item 2",
+                        "type": "File"
+                    },
+                    {
+                        "title": "Item 3",
+                        "type": "File"
+                    }
+                ]
+            }
         ],
         "Zoom": [
             {

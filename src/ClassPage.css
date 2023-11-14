@@ -175,14 +175,6 @@
 
 }
 
-.draggableList {
-    list-style-type: none;
-    /* Remove default padding and margin */
-    padding: 0;
-    margin: 0;
-}
-
-
 /* Assignments */
 /* .ClassAssignment-ContainerItem {
     display: flex;

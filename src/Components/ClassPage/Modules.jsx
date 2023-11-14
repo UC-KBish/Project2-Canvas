@@ -1,95 +1,88 @@
 import React, { useState } from 'react';
 
-import ModuleListItem from './ModuleListItem'
-
 import classData from '../../data.json'
 
 export default function Modules(props) {
-    const [sourceList, setSourceList] = useState([]);
+    const [favoriteList, setFavoriteList] = useState([]);
     let destinationLists = classData[props.ClassID]['Modules']
 
-    const handleDragStart = (e, item) => {
-        e.dataTransfer.setData('text/plain', item);
-    };
-
-    const handleDragOver = (e) => {
-        e.preventDefault();
-    };
-
-    const moveInSource = (index, direction) => {
-        const updatedSourceList = [...sourceList];
+    const moveInFavorites = (index, direction) => {
+        const updatedSourceList = [...favoriteList];
         let elementToMove = updatedSourceList.splice(index + direction, 1)[0];
         if (direction != 0) {
             updatedSourceList.splice(index, 0, elementToMove);
         }
-        setSourceList(updatedSourceList);
+        setFavoriteList(updatedSourceList);
     }
 
-    const handleDropSource = (e) => {
-        const droppedItem = e.dataTransfer.getData('text/plain');
-        if (!sourceList.includes(droppedItem)) {
-            setSourceList([...sourceList, droppedItem]);
-
-        } else if (draggedItem) {
-            const updatedSourceList = [...sourceList];
-            updatedSourceList.splice(sourceList.indexOf(draggedItem), 1);
-            updatedSourceList.splice(sourceList.indexOf(droppedItem), 0, draggedItem);
-            setSourceList(updatedSourceList);
-
+    const appendToFavorites = (newElem) => {
+        for (let i = 0; i < favoriteList.length; i++) {
+            if (newElem['title'] == favoriteList[i]['title']) {
+                return
+            }
         }
-    };
+        let updatedFavoriteList = [...favoriteList];
+        updatedFavoriteList.push(newElem)
 
+        setFavoriteList(updatedFavoriteList);
+    }
 
     return (
         <div className='ClassPage-Container'>
             <h1>Modules</h1>
             <div className="grid-container">
-                <div onDragOver={(e) => handleDragOver(e)} onDrop={(e) => handleDropSource(e)}>
-                    <ModuleListItem key={0} value={0} content={<>
-                        <h2>My Favorites</h2>
-                        <ul className='draggableList'>
-                            {sourceList.map((item, index) => (
-                                <li
-                                    key={item}
-                                >
-                                    <div className='favoriteModule'>
-                                        {item}
-                                        <div>
-                                            {index > 0 ?
-                                                <button onClick={() => moveInSource(index, -1)}><i className="bi bi-chevron-up" /></button> : <></>
-                                            }
+                <div className="ClassPage-ContainerItem" style={{ display: 'block' }}>
+                    <h2>My Favorites</h2>
+                    <ul style={{ listStyleType: 'none', padding: 0}}>
+                        {favoriteList.map((item, index) => (
+                                        <li key={item['title']} style={{marginBlock: '1rem', borderBottom: '#c0c0c0 solid 1px'}}>
+                                        <div className='favoriteModule'>
+                                    <i className="bi bi-file-earmark-arrow-down" style={{ fontStyle: 'normal' }}>
+                                        {item['title']}
+                                    </i>
+                                    <div style={{ display: 'flex' }}>
 
-                                            {index < sourceList.length - 1 ?
-                                                <button onClick={() => moveInSource(index, 1)}><i className="bi bi-chevron-down" /></button> : <></>
-                                            }
-                                            <button onClick={() => moveInSource(index, 0)}><i className="bi bi-trash" /></button>
-                                        </div>
+                                        {index > 0 ?
+                                            <button style={{ width: 'inherit', paddingInline: '0.25rem' }} onClick={() => moveInFavorites(index, -1)}><i className="bi bi-chevron-up" /></button> : <></>
+                                        }
+
+                                        {index < favoriteList.length - 1 ?
+                                            <button style={{ width: 'inherit', paddingInline: '0.25rem' }} onClick={() => moveInFavorites(index, 1)}><i className="bi bi-chevron-down" /></button> : <></>
+                                        }
+
+                                        <button className='hidden-button' style={{ width: 'inherit', paddingInline: '0.25rem' }} onClick={() => { }}><i className="bi bi-download" /></button>
+                                        <button className='hidden-button' style={{ width: 'inherit', paddingInline: '0.25rem' }} onClick={() => moveInFavorites(index, 0)}><i className="bi bi-heart-fill" /></button>
                                     </div>
-                                </li>
-                            ))}
-                        </ul>
-                    </>} />
+                                </div>
+                            </li>
+                        ))}
+                    </ul>
                 </div>
                 {destinationLists.map((value, index) => {
-                    return (<ModuleListItem key={index} value={index} content={<>
-                        <h2>Module {index + 1} - Getting Started</h2>
-                        <ul className='draggableList'>
-                            {value.map((item) => (
-                                <li
-                                    key={item}
-                                    draggable
-                                    onDragStart={(e) => handleDragStart(e, item)}
-                                >
-                                    <i className="bi bi-pencil" style={{fontSize: '1.5rem'}}></i>
-                                    <i className="bi bi-file-text" style={{fontSize: '1.5rem'}}></i>
-                                    {item}
-                                </li>
-                            ))}
-                        </ul>
-                    </>} />)
+                    return (
+                        <div className="ClassPage-ContainerItem" style={{ display: 'block' }}>
+                            <h2>Module {index + 1} - {value['title']}</h2>
+                            <ul style={{ listStyleType: 'none', padding: 0 }}>
+                                {value['items'].map((item, index) => {
+                                    return (
+                                        <li key={item['title']} style={{marginBlock: '1rem', borderBottom: '#c0c0c0 solid 1px'}}>
+                                            <div className='favoriteModule'>
+                                                <i className={item['type'] == 'File' ? "bi bi-file-earmark-arrow-down" : "bi bi-file-text"} style={{ fontStyle: 'normal' }}>
+                                                    {item['title']}
+                                                </i>
+                                                <div style={{ display: 'flex' }}>
+                                                    <button className='hidden-button' style={{ width: 'inherit', paddingInline: '0.25rem' }} onClick={() => { }}><i className="bi bi-download" /></button>
+                                                    <button className='hidden-button' style={{ width: 'inherit', paddingInline: '0.25rem' }} onClick={() => appendToFavorites(item)}><i className="bi bi-heart" /></button>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    )
+                                })}
+                            </ul>
+                        </div>
+                    )
                 })}
             </div>
-            {/* <button onClick={() => completedAssignment}>Woo</button> */}
             <button>Download All Files</button>
         </div>
     )
