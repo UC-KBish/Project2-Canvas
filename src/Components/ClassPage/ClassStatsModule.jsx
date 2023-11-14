@@ -39,11 +39,21 @@ let circleIndicatorFunc = (assignmentsCompleted) => {
    
          // Increment the rotation angle
          angle += assignmentsCompleted == 10 ? 1 : 0;
+
+         if (angle >= 500) {
+            setCanvasSize(1, 1);
+         }
    
          // Request the next animation frame
          requestAnimationFrame(draw);
        }
    
+           // Function to set the canvas size
+    function setCanvasSize(width, height) {
+        canvas.width = width;
+        canvas.height = height;
+      }
+
        // Ensure the image is loaded before starting the animation
        image.onload = function () {
          // Start the animation
