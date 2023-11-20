@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { Layout, Menu, theme } from 'antd';
 import ClassPage from '../ClassPage';
 import SidebarGlobal from '../Components/SidebarGlobal';
-import WipPage from '../components/WipPage';
+import WipPage from '../Components/WipPage';
 import Dashboard from './Dashboard';
-import Profile from '../components/Profile';
+import Profile from '../Components/Profile';
 import AnnouncementsPage from '../Components/AnnouncementsPage/AnnouncementsPage';
 
 const { Header, Content, Sider } = Layout;
