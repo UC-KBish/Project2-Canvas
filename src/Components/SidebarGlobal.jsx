@@ -1,7 +1,3 @@
-import { useState } from 'react';
-import WipPage from "./WipPage";
-import Lay from "../Dashboard/Lay";
-
 let buttons = [
     {
         id: 'globalButton1',

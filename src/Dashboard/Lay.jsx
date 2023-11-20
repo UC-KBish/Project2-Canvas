@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Menu, theme } from 'antd';
 import ClassPage from '../ClassPage';
-import SidebarGlobal from '../components/SidebarGlobal';
+import SidebarGlobal from '../Components/SidebarGlobal';
 import WipPage from '../components/WipPage';
 import Dashboard from './Dashboard';
 import Profile from '../components/Profile';
